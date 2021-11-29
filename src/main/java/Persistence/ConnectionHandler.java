@@ -10,7 +10,7 @@ public class ConnectionHandler {
     private int port = 5432;
     private String dbName = "beermachinedb";
     private String username = "postgres";
-    private String password = "bz90704klmas";
+    private String password = "nicolai10";
     private Connection connection;
 
 
