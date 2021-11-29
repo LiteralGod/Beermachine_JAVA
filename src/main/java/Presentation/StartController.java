@@ -1,8 +1,6 @@
 package Presentation;
 
-import Domain.Read;
-import Domain.Subscription;
-import Domain.Write;
+import Domain.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
@@ -21,10 +20,14 @@ import java.util.ResourceBundle;
 
 public class StartController implements Initializable {
     @FXML
-    private Button startBtn, abortBtn, stopBtn, resetBtn;
+    private Button startBtn, abortBtn, stopBtn, resetBtn, testBtn;
+    @FXML
+    private Label speedError;
 
     @FXML
-    private ChoiceBox<String> beerChoice, beerType;
+    private ChoiceBox<BeerType> beerChoice;
+    @FXML
+    private ChoiceBox<BeerType> beerType;
 
     @FXML
     private Text totalGood, totalBad, temperature, humidity, vibration, barley, hops, malt, wheat, yeast;
@@ -33,11 +36,9 @@ public class StartController implements Initializable {
     private TextField beerSpeed, beerAmount;
 
     @FXML
-    private ObservableList<String> tempObservableList;
+    private ObservableList<BeerType> tempObservableList;
 
-    Read read = new Read();
-    Write write = new Write();
-    Subscription subscription = new Subscription();
+    IDomainHandler domainHandler = new DomainHandler();
 
 
     @FXML
@@ -45,37 +46,59 @@ public class StartController implements Initializable {
 
 
     }
+
     @FXML
-    public void StartMachine(){
-        write.writeToNode(startBtn.getText());
+    public void StartMachine() {
+        if (beerSpeed.getText().isEmpty()) {
+            speedError.setVisible(true);
+        } else {
+            speedError.setVisible(false);
+            float beerTypeID = 0;
+            switch (beerType.getValue().toString()) {
+                case "Pilsner" -> {
+                    beerTypeID = 0;
+                }
+                case "Wheat" -> {
+                    beerTypeID = 1;
+                }
+                case "IPA" -> {
+                    beerTypeID = 2;
+                }
+                case "Stout" -> {
+                    beerTypeID = 3;
+                }
+                case "Ale" -> {
+                    beerTypeID = 4;
+                }
+                case "Alcohol Free" -> {
+                    beerTypeID = 5;
+                }
+
+            }
+            domainHandler.StartMachine(beerTypeID, Float.parseFloat(beerSpeed.getText()));
+        }
+    }
+
+
+    @FXML
+    public void StopMachine() {
+        domainHandler.StopMachine();
     }
 
     @FXML
-    public void StopMachine(){
-        write.writeToNode(stopBtn.getText());
-    }
-    @FXML
-    public void ResetMachine(){
-        write.writeToNode(resetBtn.getText());
+    public void ResetMachine() {
+        domainHandler.ResetMachine();
     }
 
     @FXML
-    public void totalCount(){
-       // subscription.Subscribe();
+    public void totalCount() {
+        // subscription.Subscribe();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ArrayList<String> tempArraylist = new ArrayList<>();
-        tempArraylist.add("hej");
-        tempArraylist.add("med");
-        tempArraylist.add("dig");
-        tempObservableList = FXCollections.observableArrayList(tempArraylist);
-        beerChoice.setItems(tempObservableList);
-        beerSpeed.setText("ns=6;s=::Program:Cube.Status.StateCurrent");
-
-
-        System.out.println(read.readNode(beerSpeed.getText()).toString());
-
+        tempObservableList = FXCollections.observableArrayList(domainHandler.ListOfBeerTypes());
+        beerType.setItems(tempObservableList);
+        beerType.setValue(tempObservableList.get(0));
     }
 }

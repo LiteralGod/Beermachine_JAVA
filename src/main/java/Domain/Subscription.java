@@ -62,10 +62,8 @@ public class Subscription {
             // creation request
             MonitoredItemCreateRequest request = new MonitoredItemCreateRequest(readValueId, MonitoringMode.Reporting, parameters);
 
-
             // setting the consumer after the subscription creation
             UaSubscription.ItemCreationCallback onItemCreated =  (item, id) -> item.setValueConsumer(Subscription::onSubscriptionValue);
-
 
             List<UaMonitoredItem> items = subscription.createMonitoredItems(TimestampsToReturn.Both, Arrays.asList(request), onItemCreated).get();
 
@@ -78,8 +76,7 @@ public class Subscription {
             }
 
             // let the example run for 50 seconds then terminate
-            Thread.sleep(50000);
-            System.out.println("hej");
+            Thread.sleep(500000);
         }
         catch(Throwable ex)
         {

@@ -11,27 +11,6 @@ import org.eclipse.milo.opcua.stack.core.types.structured.EndpointDescription;
 import java.util.List;
 
 public interface IPersistenceHandler {
-    class Write {
-        public static void main(String[] args) {
-            try
-            {
-                List<EndpointDescription> endpoints = DiscoveryClient.getEndpoints("opc.tcp://127.0.0.1:4840").get();
-
-                OpcUaClientConfigBuilder cfg = new OpcUaClientConfigBuilder();
-                cfg.setEndpoint(endpoints.get(0));
-
-                OpcUaClient client = OpcUaClient.create(cfg.build());
-                client.connect().get();
-
-                NodeId nodeId1 = NodeId.parse("ns=6;s=::Program:Cube.Command.CmdChangeRequest");
-                client.writeValue(nodeId1, DataValue.valueOnly(new Variant(true))).get();
-
-            }
-            catch(Throwable ex)
-            {
-                ex.printStackTrace();
-            }
+    List<BeerType> queryAllBeerTypes();
 
         }
-    }
-}
