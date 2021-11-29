@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.StartController">
+   <children>
+      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+          <Tab text="Beermachine">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3c454d" height="392.0" layoutX="-7.0" layoutY="-15.0" stroke="WHITE" strokeType="INSIDE" width="614.0" AnchorPane.bottomAnchor="-6.0" AnchorPane.leftAnchor="-7.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="-15.0" />
+                        <ChoiceBox fx:id="beerChoice" layoutX="14.0" layoutY="32.0" prefWidth="150.0" />
+                        <Label layoutX="14.0" layoutY="14.0" text="Default" textFill="WHITE" />
+                        <ChoiceBox fx:id="beerType" layoutX="14.0" layoutY="183.0" prefWidth="150.0" />
+                        <Label layoutX="14.0" layoutY="166.0" text="Beer type" textFill="WHITE" />
+                        <TextField fx:id="beerSpeed" layoutX="187.0" layoutY="186.0" prefHeight="25.0" prefWidth="78.0" />
+                        <Label layoutX="191.0" layoutY="166.0" text="Set Speed" textFill="WHITE" />
+                        <Label layoutX="14.0" layoutY="340.0" text="Temperature:" textFill="WHITE" />
+                        <Label layoutX="136.0" layoutY="340.0" text="Humidity:" textFill="WHITE" />
+                        <Label layoutX="231.0" layoutY="340.0" text="Vibration:" textFill="WHITE" />
+                        <Text fx:id="temperature" fill="WHITE" layoutX="89.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fx:id="humidity" fill="WHITE" layoutX="191.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fx:id="vibration" fill="WHITE" layoutX="289.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Line endX="-29.0" endY="-164.0" layoutX="464.0" layoutY="120.0" startX="-29.0" startY="265.0" />
+                        <Label layoutX="440.0" layoutY="30.0" text="Barley:" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="440.0" layoutY="71.0" text="Hops:" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="440.0" layoutY="119.0" text="Malt:" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="440.0" layoutY="168.0" text="Wheat:" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="440.0" layoutY="210.0" text="Yeast:" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Text fx:id="barley" fill="WHITE" layoutX="510.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fx:id="hops" fill="WHITE" layoutX="510.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fx:id="malt" fill="WHITE" layoutX="510.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fx:id="wheat" fill="WHITE" layoutX="510.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fx:id="yeast" fill="WHITE" layoutX="510.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Label layoutX="20.0" layoutY="232.0" text="Total good:" textFill="WHITE" />
+                        <Label layoutX="20.0" layoutY="271.0" text="Total bad:" textFill="WHITE" />
+                        <Line endX="334.0" layoutX="100.0" layoutY="330.0" startX="-100.0" />
+                        <TextField fx:id="beerAmount" layoutX="292.0" layoutY="183.0" prefHeight="25.0" prefWidth="112.0" />
+                        <Label layoutX="292.0" layoutY="166.0" text="Set amount" textFill="WHITE" />
+                        <Text fx:id="totalGood" fill="WHITE" layoutX="84.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fx:id="totalBad" fill="WHITE" layoutX="78.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Button fx:id="startBtn" layoutX="13.0" layoutY="83.0" mnemonicParsing="false" onMouseClicked="#StartMachine" text="Start" />
+                        <Button fx:id="abortBtn" layoutX="62.0" layoutY="83.0" mnemonicParsing="false" text="Abort" />
+                        <Button fx:id="stopBtn" layoutX="116.0" layoutY="83.0" mnemonicParsing="false" onMouseClicked="#StopMachine" text="Stop" />
+                        <Button fx:id="resetBtn" layoutX="165.0" layoutY="83.0" mnemonicParsing="false" onMouseClicked="#ResetMachine" text="Reset" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Batches">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
