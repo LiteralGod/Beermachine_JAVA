@@ -97,8 +97,8 @@ public class PersistenceHandler implements IPersistenceHandler {
             while (sqlReturnValues.next()){
                 returnValue.add(new DefaultProduct(
                         getBeerType(sqlReturnValues.getInt(1)),
-                        sqlReturnValues.getInt(2),
-                        sqlReturnValues.getInt(3)));
+                        sqlReturnValues.getInt(3),
+                        sqlReturnValues.getInt(4)));
             }
             return returnValue;
 
