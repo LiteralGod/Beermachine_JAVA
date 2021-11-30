@@ -13,7 +13,7 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.Variant;
 import org.eclipse.milo.opcua.stack.core.types.structured.EndpointDescription;
 
 public class Write {
-    public void StartMachine(float beerTypeID, float setSpeed) {
+    public void StartMachine(float beerTypeID, float setSpeed, float setAmount) {
         try {
             List<EndpointDescription> endpoints = DiscoveryClient.getEndpoints("opc.tcp://127.0.0.1:4840").get();
 
@@ -32,6 +32,14 @@ public class Write {
             NodeId nodeId3 = NodeId.parse("ns=6;s=::Program:Cube.Command.MachSpeed");
             client.writeValue(nodeId3, DataValue.valueOnly(new Variant(setSpeed))).get();
             System.out.println(setSpeed);
+
+            //set Amount if not 0
+            if(setAmount != 0){
+                NodeId nodeId4 = NodeId.parse("ns=6;s=::Program:Cube.Command.Parameter[2].Value");
+                client.writeValue(nodeId4, DataValue.valueOnly(new Variant(setAmount))).get();
+
+            }
+
 
 
             //Start request

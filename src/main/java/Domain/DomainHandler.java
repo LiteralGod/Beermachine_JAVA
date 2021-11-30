@@ -20,8 +20,8 @@ public class DomainHandler implements IDomainHandler {
     }
 
     @Override
-    public void StartMachine(float beerType, float beerSpeed) {
-        writeToNode.StartMachine(beerType, beerSpeed);
+    public void StartMachine(float beerType, float beerSpeed, float setAmount) {
+        writeToNode.StartMachine(beerType, beerSpeed, setAmount);
     }
 
     @Override

@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IDomainHandler {
 
-   void StartMachine(float beerType, float beerSpeed);
+   void StartMachine(float beerType, float beerSpeed, float setAmount);
 
    void StopMachine();
 

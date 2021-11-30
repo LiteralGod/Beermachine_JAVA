@@ -78,7 +78,7 @@ public class StartController implements Initializable {
                 }
 
             }
-            domainHandler.StartMachine(beerTypeID, Float.parseFloat(beerSpeed.getText()));
+            domainHandler.StartMachine(beerTypeID, Float.parseFloat(beerSpeed.getText()), Float.parseFloat(beerAmount.getText()));
         }
     }
 
