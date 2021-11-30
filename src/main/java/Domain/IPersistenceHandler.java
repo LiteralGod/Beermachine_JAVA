@@ -12,5 +12,6 @@ import java.util.List;
 
 public interface IPersistenceHandler {
     List<BeerType> queryAllBeerTypes();
-
-        }
+    List<Batch> queryAllBatches();
+    void insertBatch();
+}

@@ -64,7 +64,6 @@ public class Subscription {
 
             // setting the consumer after the subscription creation
             UaSubscription.ItemCreationCallback onItemCreated =  (item, id) -> item.setValueConsumer(Subscription::onSubscriptionValue);
-
             List<UaMonitoredItem> items = subscription.createMonitoredItems(TimestampsToReturn.Both, Arrays.asList(request), onItemCreated).get();
 
             for (UaMonitoredItem item : items) {

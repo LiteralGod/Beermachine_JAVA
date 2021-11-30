@@ -1,5 +1,6 @@
 package Persistence;
 
+import Domain.Batch;
 import Domain.BeerType;
 import Domain.IPersistenceHandler;
 
@@ -45,5 +46,15 @@ public class PersistenceHandler implements IPersistenceHandler {
             throwables.printStackTrace();
             return null;
         }
+    }
+
+    @Override
+    public List<Batch> queryAllBatches() {
+        return null;
+    }
+
+    @Override
+    public void insertBatch() {
+
     }
 }

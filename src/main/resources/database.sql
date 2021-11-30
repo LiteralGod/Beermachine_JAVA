@@ -1,8 +1,8 @@
 DROP TABLE IF EXISTS beer_type CASCADE;
 
 create table beer_type(
-                          id SERIAL PRIMARY KEY,
-                          name VARCHAR(50) UNIQUE NOT NULL
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50) UNIQUE NOT NULL
 );
 
 
@@ -13,3 +13,6 @@ values ('Pilsner'),
        ('Stout'),
        ('Ale'),
        ('Alcohol Free');
+
+
+
