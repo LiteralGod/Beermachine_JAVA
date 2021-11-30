@@ -8,7 +8,7 @@ module Beermachine_JAVA {
     requires org.eclipse.milo.opcua.stack.core;
     requires slf4j.api;
     requires java.sql;
-    requires postgresql;
+    requires mysql.connector.java;
 
     opens Domain;
     opens Presentation;
