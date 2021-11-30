@@ -39,5 +39,10 @@ public class DomainHandler implements IDomainHandler {
         return persistenceHandler.queryAllBeerTypes();
     }
 
+    @Override
+    public List<DefaultProduct> listOfDefaultProducts(){
+        return persistenceHandler.queryAllDefaultProducts();
+    }
+
 
 }

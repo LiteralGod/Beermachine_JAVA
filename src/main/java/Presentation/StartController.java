@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -25,7 +26,7 @@ public class StartController implements Initializable {
     private Label speedError;
 
     @FXML
-    private ChoiceBox<BeerType> beerChoice;
+    private ChoiceBox<DefaultProduct> beerChoice;
     @FXML
     private ChoiceBox<BeerType> beerType;
 
@@ -36,7 +37,9 @@ public class StartController implements Initializable {
     private TextField beerSpeed, beerAmount;
 
     @FXML
-    private ObservableList<BeerType> tempObservableList;
+    private ObservableList<BeerType> beerTypeObservableList;
+    @FXML
+    private ObservableList<DefaultProduct> defaultProductObservableList;
 
     IDomainHandler domainHandler = new DomainHandler();
 
@@ -95,10 +98,23 @@ public class StartController implements Initializable {
         // subscription.Subscribe();
     }
 
+
+    @FXML
+    public void setDefaultProduct(ActionEvent event){
+        if(beerChoice.getSelectionModel().getSelectedItem() != null){
+            beerType.setValue(beerChoice.getValue().getBeerType());
+            beerSpeed.setText(String.valueOf(beerChoice.getValue().getDefaultSpeed()));
+            beerAmount.setText(String.valueOf(beerChoice.getValue().getDefaultAmount()));
+        }
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        tempObservableList = FXCollections.observableArrayList(domainHandler.ListOfBeerTypes());
-        beerType.setItems(tempObservableList);
-        beerType.setValue(tempObservableList.get(0));
+        beerTypeObservableList = FXCollections.observableArrayList(domainHandler.ListOfBeerTypes());
+        beerType.setItems(beerTypeObservableList);
+        beerType.setValue(beerTypeObservableList.get(0));
+        defaultProductObservableList = FXCollections.observableArrayList(domainHandler.listOfDefaultProducts());
+        beerChoice.setItems(defaultProductObservableList);
+        beerChoice.setValue(defaultProductObservableList.get(0));
     }
 }
