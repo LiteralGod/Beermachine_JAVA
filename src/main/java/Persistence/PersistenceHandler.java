@@ -2,6 +2,7 @@ package Persistence;
 
 import Domain.Batch;
 import Domain.BeerType;
+import Domain.DefaultProduct;
 import Domain.IPersistenceHandler;
 
 import javax.xml.transform.Result;
@@ -56,5 +57,54 @@ public class PersistenceHandler implements IPersistenceHandler {
     @Override
     public void insertBatch() {
 
+    }
+
+
+    @Override
+    public BeerType getBeerType(int id){
+        try {
+            PreparedStatement stmt = connectionHandler.getConnection().prepareStatement(
+                    "SELECT name FROM beer_type WHERE id = ?"
+            );
+            stmt.setInt(1, id);
+
+            ResultSet sqlReturnValues = stmt.executeQuery();
+
+            if (!sqlReturnValues.next()) {
+                return null;
+            }
+
+            return new BeerType(
+                    sqlReturnValues.getString(1)
+            );
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return null;
+        }
+    }
+
+
+    @Override
+    public List<DefaultProduct> queryAllDefaultProducts() {
+        try {
+            PreparedStatement stmt = connectionHandler.getConnection().prepareStatement(
+                    "SELECT * FROM default_product"
+            );
+            ResultSet sqlReturnValues = stmt.executeQuery();
+
+            List<DefaultProduct> returnValue = new ArrayList<>();
+
+            while (sqlReturnValues.next()){
+                returnValue.add(new DefaultProduct(
+                        getBeerType(sqlReturnValues.getInt(1)),
+                        sqlReturnValues.getInt(2),
+                        sqlReturnValues.getInt(3)));
+            }
+            return returnValue;
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return null;
+        }
     }
 }

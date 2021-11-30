@@ -14,4 +14,8 @@ public interface IPersistenceHandler {
     List<BeerType> queryAllBeerTypes();
     List<Batch> queryAllBatches();
     void insertBatch();
+
+    BeerType getBeerType(int id);
+
+    List<DefaultProduct> queryAllDefaultProducts();
 }

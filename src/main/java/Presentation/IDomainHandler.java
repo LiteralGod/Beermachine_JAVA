@@ -1,6 +1,7 @@
 package Presentation;
 
 import Domain.BeerType;
+import Domain.DefaultProduct;
 
 import java.util.List;
 
@@ -13,4 +14,6 @@ public interface IDomainHandler {
    void ResetMachine();
 
    List<BeerType> ListOfBeerTypes();
+
+   List<DefaultProduct> listOfDefaultProducts();
 }
