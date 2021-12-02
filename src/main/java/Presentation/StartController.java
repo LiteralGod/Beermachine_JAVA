@@ -1,6 +1,7 @@
 package Presentation;
 
 import Domain.*;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -31,7 +32,7 @@ public class StartController implements Initializable {
     private ChoiceBox<BeerType> beerType;
 
     @FXML
-    private Text totalGood, totalBad, temperature, humidity, vibration, barley, hops, malt, wheat, yeast;
+    private Text totalGood, totalBad, totalProduced, currentStatus, temperature, humidity, vibration, barley, hops, malt, wheat, yeast;
 
     @FXML
     private TextField beerSpeed, beerAmount;
@@ -41,7 +42,9 @@ public class StartController implements Initializable {
     @FXML
     private ObservableList<DefaultProduct> defaultProductObservableList;
 
+    private Thread t1, t2;
     IDomainHandler domainHandler = new DomainHandler();
+
 
 
     @FXML
@@ -108,6 +111,7 @@ public class StartController implements Initializable {
         }
     }
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         beerTypeObservableList = FXCollections.observableArrayList(domainHandler.ListOfBeerTypes());
@@ -116,5 +120,11 @@ public class StartController implements Initializable {
         defaultProductObservableList = FXCollections.observableArrayList(domainHandler.listOfDefaultProducts());
         beerChoice.setItems(defaultProductObservableList);
         beerChoice.setValue(defaultProductObservableList.get(0));
+        infoRunnable infoRunnable1 = new infoRunnable(5000,totalProduced);
+        t1 = new Thread(infoRunnable1);
+        t1.start();
+        infoRunnable infoRunnable2 = new infoRunnable(5000, currentStatus);
+        t2 = new Thread(infoRunnable2);
+        t2.start();
     }
 }

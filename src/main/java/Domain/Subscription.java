@@ -30,7 +30,18 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.UInteger;
 import org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.Unsigned;
 
 public class Subscription {
-    public static void main(String[] args){
+
+    int nodeValue;
+
+    public int getNodeValue() {
+        return nodeValue;
+    }
+
+    public void setNodeValue(int nodeValue) {
+        this.nodeValue = nodeValue;
+    }
+
+    public int Subscribe() {
         try
         {
             List<EndpointDescription> endpoints = DiscoveryClient.getEndpoints("opc.tcp://127.0.0.1:4840").get();
@@ -63,7 +74,7 @@ public class Subscription {
             MonitoredItemCreateRequest request = new MonitoredItemCreateRequest(readValueId, MonitoringMode.Reporting, parameters);
 
             // setting the consumer after the subscription creation
-            UaSubscription.ItemCreationCallback onItemCreated =  (item, id) -> item.setValueConsumer(Subscription::onSubscriptionValue);
+            UaSubscription.ItemCreationCallback onItemCreated =  (item, id) -> item.setValueConsumer(this::onSubscriptionValue);
             List<UaMonitoredItem> items = subscription.createMonitoredItems(TimestampsToReturn.Both, Arrays.asList(request), onItemCreated).get();
 
             for (UaMonitoredItem item : items) {
@@ -74,17 +85,21 @@ public class Subscription {
                 }
             }
 
+
             // let the example run for 50 seconds then terminate
-            Thread.sleep(500000);
+            Thread.sleep(50000);
+
+
         }
         catch(Throwable ex)
         {
             ex.printStackTrace();
         }
+        return this.getNodeValue();
 
     }
 
-    private static void onSubscriptionValue(UaMonitoredItem item, DataValue value) {
-        System.out.println(value.getValue().getValue());
+    private void onSubscriptionValue(UaMonitoredItem item, DataValue value) {
+        this.setNodeValue((Integer) value.getValue().getValue());
     }
 }

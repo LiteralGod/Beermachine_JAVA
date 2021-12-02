@@ -16,4 +16,10 @@ public interface IDomainHandler {
    List<BeerType> ListOfBeerTypes();
 
    List<DefaultProduct> listOfDefaultProducts();
+
+   float Subscribe();
+
+   float readValue(String someString);
+
+   void HandleRunnable();
 }

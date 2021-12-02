@@ -65,13 +65,13 @@
                         <Text fx:id="malt" fill="WHITE" layoutX="510.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
                         <Text fx:id="wheat" fill="WHITE" layoutX="510.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
                         <Text fx:id="yeast" fill="WHITE" layoutX="510.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-                        <Label layoutX="20.0" layoutY="232.0" text="Total good:" textFill="WHITE" />
-                        <Label layoutX="20.0" layoutY="271.0" text="Total bad:" textFill="WHITE" />
+                        <Label layoutX="20.0" layoutY="232.0" text="Total produced:" textFill="WHITE" />
+                        <Label layoutX="20.0" layoutY="288.0" text="Total bad:" textFill="WHITE" />
                         <Line endX="334.0" layoutX="100.0" layoutY="330.0" startX="-100.0" />
                         <TextField fx:id="beerAmount" layoutX="292.0" layoutY="183.0" prefHeight="25.0" prefWidth="112.0" />
                         <Label layoutX="292.0" layoutY="166.0" text="Set amount" textFill="WHITE" />
-                        <Text fx:id="totalGood" fill="WHITE" layoutX="84.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-                        <Text fx:id="totalBad" fill="WHITE" layoutX="78.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fx:id="totalProduced" fill="WHITE" layoutX="106.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fx:id="totalBad" fill="WHITE" layoutX="78.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
                         <Button fx:id="startBtn" layoutX="13.0" layoutY="83.0" mnemonicParsing="false" onMouseClicked="#StartMachine" text="Start" />
                         <Button fx:id="abortBtn" layoutX="62.0" layoutY="83.0" mnemonicParsing="false" text="Abort" />
                         <Button fx:id="stopBtn" layoutX="116.0" layoutY="83.0" mnemonicParsing="false" onMouseClicked="#StopMachine" text="Stop" />
@@ -80,6 +80,14 @@
                            <font>
                               <Font size="10.0" />
                            </font></Label>
+                        <Label layoutX="20.0" layoutY="260.0" text="Total good:" textFill="WHITE" />
+                        <Text fx:id="totalGood" fill="WHITE" layoutX="85.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Label layoutX="13.0" layoutY="118.0" text="Current Status:" textFill="#dbff6e" />
+                        <Text fx:id="currentStatus" fill="#dcff5c" layoutX="92.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stopped">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Text>
                      </children>
                   </AnchorPane>
             </content>

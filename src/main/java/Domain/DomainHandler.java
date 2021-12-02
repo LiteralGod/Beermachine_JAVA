@@ -44,5 +44,21 @@ public class DomainHandler implements IDomainHandler {
         return persistenceHandler.queryAllDefaultProducts();
     }
 
+    @Override
+    public float Subscribe() {
+        return subscripeToNode.Subscribe();
+    }
+
+    @Override
+    public float readValue(String someString) {
+        return readFromNode.readNode(someString);
+    }
+
+    @Override
+    public void HandleRunnable(){
+
+
+    }
+
 
 }

@@ -22,36 +22,36 @@ import org.slf4j.Logger;
  */
 public class Read {
     Variant variant;
-    public Variant readNode(String nodeID) {
-            try 
-            {
-                List<EndpointDescription> endpoints = DiscoveryClient.getEndpoints("opc.tcp://127.0.0.1:4840").get();
 
-                OpcUaClientConfigBuilder cfg = new OpcUaClientConfigBuilder();
-                cfg.setEndpoint(endpoints.get(0));
+    public int readNode(String someString) {
+        try {
+            List<EndpointDescription> endpoints = DiscoveryClient.getEndpoints("opc.tcp://127.0.0.1:4840").get();
 
-                OpcUaClient client = OpcUaClient.create(cfg.build());
-                client.connect().get();
+            OpcUaClientConfigBuilder cfg = new OpcUaClientConfigBuilder();
+            cfg.setEndpoint(endpoints.get(0));
 
-                NodeId nodeId = NodeId.parse(nodeID);
+            OpcUaClient client = OpcUaClient.create(cfg.build());
+            client.connect().get();
 
-                DataValue dataValue = client.readValue(0, TimestampsToReturn.Both, nodeId)
+            NodeId nodeId = NodeId.parse("ns=6;s=::Program:Cube.Admin.ProdProcessedCount");
+            NodeId nodeId1 = NodeId.parse("ns=6;s=::Program:Cube.Status.StateCurrent");
+
+            DataValue dataValue;
+            if (someString.equals("totalProduced")) {
+                dataValue = client.readValue(0, TimestampsToReturn.Both, nodeId)
                         .get();
-                System.out.println("DataValue= " + dataValue);
-
-                variant = dataValue.getValue();
-                
-                System.out.println("Variant= " + variant);
-
-                double sawTooth = (double)variant.getValue();
-                System.out.println("Sawtooth" + sawTooth);
-
             }
-            catch(Throwable ex)
-            {
-                ex.printStackTrace();
+            else {
+                dataValue = client.readValue(0, TimestampsToReturn.Both, nodeId1)
+                        .get();
             }
-        return variant;
+
+            variant = dataValue.getValue();
+        }catch (Throwable ex) {
+            ex.printStackTrace();
+        }
+        return (int) variant.getValue();
 
     }
+
 }
