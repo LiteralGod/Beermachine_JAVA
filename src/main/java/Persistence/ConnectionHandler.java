@@ -6,11 +6,11 @@ import java.sql.SQLException;
 
 public class ConnectionHandler {
     private static ConnectionHandler instance;
-    private String url = "localhost";
-    private int port = 5432;
-    private String dbName = "beermachinedb";
-    private String username = "postgres";
-    private String password = "bz90704klmas";
+    private String url = "127.0.0.1";
+    private int port = 3306;
+    private String dbName = "beermachine";
+    private String username = "root";
+    private String password = "secret";
     private Connection connection;
 
 
@@ -28,8 +28,12 @@ public class ConnectionHandler {
 
     private void initSQLDatabase() {
         try {
-            DriverManager.registerDriver(new org.postgresql.Driver());
-            connection = DriverManager.getConnection("jdbc:postgresql://" + url + ":" + port + "/" + dbName, username, password);
+            DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+
+            connection = DriverManager.getConnection("jdbc:mysql://" + url + ":" + port + "/" + dbName, username, password);
+
+            // connection = DriverManager.getConnection("jdbc:mysql://" + url + ":" + port + "/" + dbName, username, password);
+
         } catch (SQLException | IllegalArgumentException ex) {
             ex.printStackTrace();
         } finally {

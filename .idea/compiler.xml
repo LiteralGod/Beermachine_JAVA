@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Beermachine" />
+        <module name="Beermachine_JAVA" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="11" />
