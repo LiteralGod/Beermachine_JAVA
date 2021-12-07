@@ -7,6 +7,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.server.handler.ResourceHandler;
 
 public class Main extends Application {
 
@@ -25,7 +27,19 @@ public class Main extends Application {
         primaryStage.setY(y);
     }
 
-    public static void main(String[] args) {
-        launch(args);
+    public static void main(String[] args) throws Exception {
+        // launch(args);
+
+
+        Server server = new Server(8080);
+
+        ResourceHandler resHandler = new ResourceHandler();
+        resHandler.setDirectoriesListed(true);
+        resHandler.setWelcomeFiles(new String[]{"beermachine.jsp"});
+        resHandler.setResourceBase("./src/main/resources");
+        server.setHandler(resHandler);
+
+        server.start();
+        server.join();
     }
 }
