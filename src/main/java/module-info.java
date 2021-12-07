@@ -9,6 +9,7 @@ module Beermachine_JAVA {
     requires slf4j.api;
     requires java.sql;
     requires mysql.connector.java;
+    requires org.bouncycastle.provider;
 
     opens Domain;
     opens Presentation;

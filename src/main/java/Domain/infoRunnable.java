@@ -26,12 +26,12 @@ public class infoRunnable implements Runnable {
             Platform.runLater(new Runnable() {
                 @Override
                 public void run() {
-                    tf.setText(String.valueOf(readNode.readNode(tf.getId())));
+                    tf.setText(String.valueOf(subscripeToNode.Subscribe()));
                 }
             });
             synchronized (this) {
                 try {
-                    wait(sleepTime);
+                    Thread.sleep(sleepTime);
                 } catch (InterruptedException e) {
                     System.out.println(Thread.currentThread() + " Has been stopped");
                     running = false;

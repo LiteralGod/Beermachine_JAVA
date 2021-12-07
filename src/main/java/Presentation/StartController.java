@@ -123,8 +123,9 @@ public class StartController implements Initializable {
         infoRunnable infoRunnable1 = new infoRunnable(5000,totalProduced);
         t1 = new Thread(infoRunnable1);
         t1.start();
-        infoRunnable infoRunnable2 = new infoRunnable(5000, currentStatus);
+       /* infoRunnable infoRunnable2 = new infoRunnable(5000, currentStatus);
         t2 = new Thread(infoRunnable2);
         t2.start();
+        */
     }
 }
