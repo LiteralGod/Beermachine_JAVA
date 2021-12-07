@@ -10,6 +10,6 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>beermachine</servlet-name>
-        <url-pattern>/beer</url-pattern>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 </web-app>
