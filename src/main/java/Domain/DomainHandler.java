@@ -45,11 +45,6 @@ public class DomainHandler implements IDomainHandler {
     }
 
     @Override
-    public float subscribeTotalProcessed() {
-        return subscripeToNode.totalProduced();
-    }
-
-    @Override
     public float readValue(String someString) {
         return readFromNode.readNode(someString);
     }

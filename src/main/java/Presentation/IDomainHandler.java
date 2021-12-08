@@ -17,8 +17,6 @@ public interface IDomainHandler {
 
    List<DefaultProduct> listOfDefaultProducts();
 
-   float subscribeTotalProcessed();
-
    float readValue(String someString);
 
    void HandleRunnable();

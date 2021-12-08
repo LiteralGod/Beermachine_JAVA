@@ -40,7 +40,15 @@ public class InfoRunnable implements Runnable {
             case "barley" -> {
                 subscripeToNode.barley();
             }
+            case "hops" -> subscripeToNode.hops();
+            case "malt" -> subscripeToNode.malt();
+            case "wheat" ->subscripeToNode.wheat();
+            case "yeast" ->subscripeToNode.yeast();
+            case "humidity" -> subscripeToNode.humidity();
+            case "temperature" -> subscripeToNode.temperature();
+            case "vibration" -> subscripeToNode.vibration();
             default -> setNodeValue(0);
+
         }
         while (running) {
             Platform.runLater(new Runnable() {
@@ -50,8 +58,12 @@ public class InfoRunnable implements Runnable {
                         case "totalProduced", "totalDefect", "currentStatus" -> {
                             tf.setText(String.valueOf(subscripeToNode.getIntNodeValue()));
                         }
-                        case "barley" -> {
-                            tf.setText(String.format("%.1f", subscripeToNode.getFloatNodeValue()) + " %");
+                        case "barley", "hops", "malt", "wheat", "yeast" -> {
+                            float newValue = ((subscripeToNode.getFloatNodeValue()/35000)*100);
+                            tf.setText(String.format("%.1f", newValue) + " %");
+                        }
+                        case "humidity", "temperature", "vibration" -> {
+                            tf.setText(String.valueOf(subscripeToNode.getFloatNodeValue()));
                         }
                         default -> setNodeValue(0);
                     }

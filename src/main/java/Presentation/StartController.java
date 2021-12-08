@@ -15,6 +15,9 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 
 public class StartController implements Initializable {
@@ -39,7 +42,6 @@ public class StartController implements Initializable {
     @FXML
     private ObservableList<DefaultProduct> defaultProductObservableList;
 
-    private Thread t1, t2, t3, t4;
     IDomainHandler domainHandler = new DomainHandler();
 
 
@@ -109,18 +111,29 @@ public class StartController implements Initializable {
     }
 
     public void handleThreads(){
+        ExecutorService executor = Executors.newFixedThreadPool(11);
         InfoRunnable ir1 = new InfoRunnable(200,totalProduced);
-        t1 = new Thread(ir1);
-        t1.start();
         InfoRunnable ir2 = new InfoRunnable(200, currentStatus);
-        t2 = new Thread(ir2);
-        t2.start();
         InfoRunnable ir3 = new InfoRunnable(200, totalDefect);
-        t3 = new Thread(ir3);
-        t3.start();
         InfoRunnable ir4 = new InfoRunnable(200,barley);
-        t4 = new Thread(ir4);
-        t4.start();
+        InfoRunnable ir5 = new InfoRunnable(200,hops);
+        InfoRunnable ir6 = new InfoRunnable(200,malt);
+        InfoRunnable ir7 = new InfoRunnable(200,wheat);
+        InfoRunnable ir8 = new InfoRunnable(200,yeast);
+        InfoRunnable ir9 = new InfoRunnable(200,humidity);
+        InfoRunnable ir10 = new InfoRunnable(200, temperature);
+        InfoRunnable ir11 = new InfoRunnable(200, vibration);
+        executor.execute(ir1);
+        executor.execute(ir2);
+        executor.execute(ir3);
+        executor.execute(ir4);
+        executor.execute(ir5);
+        executor.execute(ir6);
+        executor.execute(ir7);
+        executor.execute(ir8);
+        executor.execute(ir9);
+        executor.execute(ir10);
+        executor.execute(ir11);
 
     }
 

@@ -52,7 +52,7 @@ public class Subscription {
         this.floatNodeValue = floatNodeValue;
     }
 
-    public void connectFloat(NodeId nodeId) {
+    public void connectFloat(String nodeValue) {
         try {
             List<EndpointDescription> endpoints = DiscoveryClient.getEndpoints("opc.tcp://127.0.0.1:4840").get();
 
@@ -61,6 +61,7 @@ public class Subscription {
 
             OpcUaClient client = OpcUaClient.create(cfg.build());
             client.connect().get();
+            NodeId nodeId = NodeId.parse(nodeValue);
 
             // what to read
             ReadValueId readValueId = new ReadValueId(nodeId, AttributeId.Value.uid(), null, null);
@@ -98,7 +99,7 @@ public class Subscription {
             ex.printStackTrace();
         }
     }
-    public void connectInt(NodeId nodeId) {
+    public void connectInt(String nodeValue) {
         try {
             List<EndpointDescription> endpoints = DiscoveryClient.getEndpoints("opc.tcp://127.0.0.1:4840").get();
 
@@ -107,6 +108,7 @@ public class Subscription {
 
             OpcUaClient client = OpcUaClient.create(cfg.build());
             client.connect().get();
+            NodeId nodeId = NodeId.parse(nodeValue);
 
             // what to read
             ReadValueId readValueId = new ReadValueId(nodeId, AttributeId.Value.uid(), null, null);
@@ -146,47 +148,54 @@ public class Subscription {
     }
 
     private void onSubscriptionValueFloat(UaMonitoredItem item, DataValue value) {
-        float newValue = (Float) value.getValue().getValue();
-        this.setFloatNodeValue((newValue)/35000*100);
+        this.setFloatNodeValue((Float) value.getValue().getValue());
     }
     private void onSubscriptionValueInt(UaMonitoredItem item, DataValue value) {
         this.setIntNodeValue((Integer) value.getValue().getValue());
     }
 
-    public float totalProduced() {
-        try {
-            NodeId nodeId = NodeId.parse("ns=6;s=::Program:Cube.Admin.ProdProcessedCount");
-            this.connectInt(nodeId);
-        } catch (UaRuntimeException e) {
-            e.printStackTrace();
-        }
-        return this.getFloatNodeValue();
+    public void totalProduced() {
+        this.connectInt("ns=6;s=::Program:Cube.Admin.ProdProcessedCount");
     }
 
     public void totalDefect(){
-        try {
-            NodeId nodeId = NodeId.parse("ns=6;s=::Program:Cube.Admin.ProdDefectiveCount");
-            this.connectInt(nodeId);
-        } catch (UaRuntimeException e) {
-            e.printStackTrace();
-        }
+        this.connectInt("ns=6;s=::Program:Cube.Admin.ProdDefectiveCount");
     }
     public void currentStatus(){
-        try {
-            NodeId nodeId = NodeId.parse("ns=6;s=::Program:Cube.Status.StateCurrent");
-            this.connectInt(nodeId);
-        } catch (UaRuntimeException e) {
-            e.printStackTrace();
-        }
+        this.connectInt("ns=6;s=::Program:Cube.Status.StateCurrent");
 
     }
+    public void humidity(){
+        this.connectFloat("ns=6;s=::Program:Cube.Status.Parameter[2].Value");
+
+    }
+    public void temperature(){
+        this.connectFloat("ns=6;s=::Program:Cube.Status.Parameter[3].Value");
+    }
+
+    public void vibration(){
+        this.connectFloat("ns=6;s=::Program:Cube.Status.Parameter[4].Value");
+    }
     public void barley(){
-        try {
-            NodeId nodeId = NodeId.parse("ns=6;s=::Program:Inventory.Barley");
-            this.connectFloat(nodeId);
-        } catch (UaRuntimeException e) {
-            e.printStackTrace();
-        }
+        this.connectFloat("ns=6;s=::Program:Inventory.Barley");
+    }
+    public void hops(){
+        this.connectFloat("ns=6;s=::Program:Inventory.Hops");
+
+    }
+
+
+    public void malt(){
+        this.connectFloat("ns=6;s=::Program:Inventory.Malt");
+
+    }
+    public void wheat(){
+        this.connectFloat("ns=6;s=::Program:Inventory.Wheat");
+
+    }
+    public void yeast(){
+        this.connectFloat("ns=6;s=::Program:Inventory.Yeast");
+
     }
 
 }
