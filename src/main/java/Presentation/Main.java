@@ -47,10 +47,7 @@ public class Main extends Application {
         // JSP support
         context.addServlet(new ServletHolder("jsp", JettyJspServlet.class), "*.jsp");
 
-//        ResourceHandler resHandler = new ResourceHandler();
-//        resHandler.setDirectoriesListed(true);
-//        resHandler.setWelcomeFiles(new String[]{"beermachine.jsp"});
-//        resHandler.setResourceBase("./src/main/resources");
+
 
         ServerConnector connector = new ServerConnector(server);
         connector.setHost(host);

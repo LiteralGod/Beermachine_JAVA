@@ -5,11 +5,20 @@
          version="4.0">
 
     <servlet>
-        <servlet-name>beermachine</servlet-name>
-        <jsp-file>/beermachine.jsp</jsp-file>
+        <servlet-name>index</servlet-name>
+        <jsp-file>/website/index.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
-        <servlet-name>beermachine</servlet-name>
+        <servlet-name>index</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>production</servlet-name>
+        <jsp-file>/website/production.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>production</servlet-name>
+        <url-pattern>/production</url-pattern>
+    </servlet-mapping>
+
 </web-app>
