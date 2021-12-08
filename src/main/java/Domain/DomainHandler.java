@@ -45,8 +45,8 @@ public class DomainHandler implements IDomainHandler {
     }
 
     @Override
-    public float Subscribe() {
-        return subscripeToNode.Subscribe();
+    public float subscribeTotalProcessed() {
+        return subscripeToNode.totalProduced();
     }
 
     @Override

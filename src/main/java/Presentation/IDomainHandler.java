@@ -17,7 +17,7 @@ public interface IDomainHandler {
 
    List<DefaultProduct> listOfDefaultProducts();
 
-   float Subscribe();
+   float subscribeTotalProcessed();
 
    float readValue(String someString);
 

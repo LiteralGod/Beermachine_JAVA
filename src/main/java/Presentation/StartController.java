@@ -1,7 +1,6 @@
 package Presentation;
 
 import Domain.*;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,12 +10,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
@@ -32,7 +29,7 @@ public class StartController implements Initializable {
     private ChoiceBox<BeerType> beerType;
 
     @FXML
-    private Text totalGood, totalBad, totalProduced, currentStatus, temperature, humidity, vibration, barley, hops, malt, wheat, yeast;
+    private Text totalGood, totalDefect, totalProduced, currentStatus, temperature, humidity, vibration, barley, hops, malt, wheat, yeast;
 
     @FXML
     private TextField beerSpeed, beerAmount;
@@ -42,7 +39,7 @@ public class StartController implements Initializable {
     @FXML
     private ObservableList<DefaultProduct> defaultProductObservableList;
 
-    private Thread t1, t2;
+    private Thread t1, t2, t3, t4;
     IDomainHandler domainHandler = new DomainHandler();
 
 
@@ -111,6 +108,22 @@ public class StartController implements Initializable {
         }
     }
 
+    public void handleThreads(){
+        InfoRunnable ir1 = new InfoRunnable(200,totalProduced);
+        t1 = new Thread(ir1);
+        t1.start();
+        InfoRunnable ir2 = new InfoRunnable(200, currentStatus);
+        t2 = new Thread(ir2);
+        t2.start();
+        InfoRunnable ir3 = new InfoRunnable(200, totalDefect);
+        t3 = new Thread(ir3);
+        t3.start();
+        InfoRunnable ir4 = new InfoRunnable(200,barley);
+        t4 = new Thread(ir4);
+        t4.start();
+
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -120,12 +133,7 @@ public class StartController implements Initializable {
         defaultProductObservableList = FXCollections.observableArrayList(domainHandler.listOfDefaultProducts());
         beerChoice.setItems(defaultProductObservableList);
         beerChoice.setValue(defaultProductObservableList.get(0));
-        infoRunnable infoRunnable1 = new infoRunnable(5000,totalProduced);
-        t1 = new Thread(infoRunnable1);
-        t1.start();
-       /* infoRunnable infoRunnable2 = new infoRunnable(5000, currentStatus);
-        t2 = new Thread(infoRunnable2);
-        t2.start();
-        */
+        this.handleThreads();
+
     }
 }
