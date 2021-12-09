@@ -21,7 +21,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3c454d" height="392.0" layoutX="-7.0" layoutY="-15.0" stroke="WHITE" strokeType="INSIDE" width="614.0" AnchorPane.bottomAnchor="-6.0" AnchorPane.leftAnchor="-7.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="-15.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3c454d" height="388.0" layoutX="-15.0" stroke="WHITE" strokeType="INSIDE" width="621.0" AnchorPane.bottomAnchor="-17.0" AnchorPane.leftAnchor="-15.0" AnchorPane.rightAnchor="-6.0" AnchorPane.topAnchor="0.0" />
                         <ChoiceBox fx:id="beerChoice" layoutX="14.0" layoutY="32.0" onAction="#setDefaultProduct" prefWidth="150.0" />
                         <Label layoutX="14.0" layoutY="14.0" text="Default" textFill="WHITE" />
                         <ChoiceBox fx:id="beerType" layoutX="14.0" layoutY="183.0" prefWidth="150.0" />
@@ -35,36 +35,36 @@
                         <Text fx:id="humidity" fill="WHITE" layoutX="191.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
                         <Text fx:id="vibration" fill="WHITE" layoutX="289.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
                         <Line endX="-29.0" endY="-164.0" layoutX="464.0" layoutY="120.0" startX="-29.0" startY="265.0" />
-                        <Label layoutX="440.0" layoutY="30.0" text="Barley:" textFill="WHITE">
+                        <Label layoutX="440.0" layoutY="59.0" text="Barley:" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Label layoutX="440.0" layoutY="71.0" text="Hops:" textFill="WHITE">
+                        <Label layoutX="440.0" layoutY="93.0" text="Hops:" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Label layoutX="440.0" layoutY="119.0" text="Malt:" textFill="WHITE">
+                        <Label layoutX="440.0" layoutY="125.0" text="Malt:" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Label layoutX="440.0" layoutY="168.0" text="Wheat:" textFill="WHITE">
+                        <Label layoutX="440.0" layoutY="155.0" text="Wheat:" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Label layoutX="440.0" layoutY="210.0" text="Yeast:" textFill="WHITE">
+                        <Label layoutX="440.0" layoutY="184.0" text="Yeast:" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Text fx:id="barley" fill="WHITE" layoutX="510.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-                        <Text fx:id="hops" fill="WHITE" layoutX="510.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-                        <Text fx:id="malt" fill="WHITE" layoutX="510.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-                        <Text fx:id="wheat" fill="WHITE" layoutX="510.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-                        <Text fx:id="yeast" fill="WHITE" layoutX="510.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fx:id="barley" fill="WHITE" layoutX="505.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fx:id="hops" fill="WHITE" layoutX="505.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fx:id="malt" fill="WHITE" layoutX="505.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fx:id="wheat" fill="WHITE" layoutX="505.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fx:id="yeast" fill="WHITE" layoutX="505.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
                         <Label layoutX="20.0" layoutY="232.0" text="Total produced:" textFill="WHITE" />
                         <Label layoutX="20.0" layoutY="288.0" text="Total defect:" textFill="WHITE" />
                         <Line endX="334.0" layoutX="100.0" layoutY="330.0" startX="-100.0" />
@@ -88,6 +88,10 @@
                               <Font size="11.0" />
                            </font>
                         </Text>
+                        <Text fill="WHITE" layoutX="440.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inventory">
+                           <font>
+                              <Font size="28.0" />
+                           </font></Text>
                      </children>
                   </AnchorPane>
             </content>

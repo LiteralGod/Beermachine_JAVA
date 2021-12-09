@@ -2,6 +2,7 @@ package Domain;
 
 import Persistence.PersistenceHandler;
 import Presentation.IDomainHandler;
+import javafx.scene.text.Text;
 
 import java.util.List;
 
@@ -50,10 +51,11 @@ public class DomainHandler implements IDomainHandler {
     }
 
     @Override
-    public void HandleRunnable(){
-
-
+    public InfoRunnable HandleRunnable(int sleepTime, Text tf){
+        return new InfoRunnable(sleepTime, tf);
     }
+
+
 
 
 }

@@ -23,10 +23,10 @@ values ('Pilsner'),
        ('Alcohol Free');
 
 INSERT INTO default_product(beerTypeID, defaultSpeed, defaultAmount)
-values(1, 300, 500),
-       (2, 150, 500),
-       (3, 75, 500),
-       (4,100,500),
-       (5, 50, 500),
-       (6,62,500);
+values(1, 456, 500),
+       (2, 168, 500),
+       (3, 99, 500),
+       (4,86,500),
+       (5, 84, 500),
+       (6,85,500);
 

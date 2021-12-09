@@ -2,6 +2,8 @@ package Presentation;
 
 import Domain.BeerType;
 import Domain.DefaultProduct;
+import Domain.InfoRunnable;
+import javafx.scene.text.Text;
 
 import java.util.List;
 
@@ -19,5 +21,5 @@ public interface IDomainHandler {
 
    float readValue(String someString);
 
-   void HandleRunnable();
+   InfoRunnable HandleRunnable(int sleepTime, Text textID);
 }
