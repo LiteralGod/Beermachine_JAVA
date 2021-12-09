@@ -141,7 +141,10 @@ div {
     padding: 4px 20px 4px 20px;
     border-radius: 6px 6px 6px 6px;
 }
-
+.start-button {
+    margin-left: 20px;
+    float:left;
+}
 .stop_button{
     margin-left: 20px;
     float: left;
@@ -154,18 +157,9 @@ div {
     margin-left: 20px;
     float:left;
 }
-.admin_back_link{
+.back-link {
     margin-left: 20px;
-    margin-top: 2px;
-    text-decoration: none;
-    background-color: #FB8D33;
-    color: #3B3838;
-    font-family: "Arial Black", sans-serif;
-    font-size: 22px;
-    border-radius: 6px 6px 6px 6px;
-    margin-bottom: 10px;
-    padding: 4px 24px 4px 24px;
-    float:left;
+    float:right;
 }
 .refill-button {
     float:left;

@@ -70,10 +70,13 @@
                 </div>
 
                 <div class="production-buttons">
+                    <button class="start-button button" type="submit">Start</button>
                     <button class="stop_button button" type="submit">Stop</button>
                     <button class="pause_button button" type="submit">Pause</button>
                     <button class="reset_button button" type="submit">Reset</button>
-                    <a class="admin_back_link button" href="/">Back</a>
+                    <a href="/">
+                        <button class="back-link button">Back</button>
+                    </a>
                 </div>
             </div>
         </div>
