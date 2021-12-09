@@ -112,28 +112,17 @@ public class StartController implements Initializable {
 
     public void handleThreads(){
         ExecutorService executor = Executors.newFixedThreadPool(11);
-        InfoRunnable ir1 = new InfoRunnable(200,totalProduced);
-        InfoRunnable ir2 = new InfoRunnable(200, currentStatus);
-        InfoRunnable ir3 = new InfoRunnable(200, totalDefect);
-        InfoRunnable ir4 = new InfoRunnable(200,barley);
-        InfoRunnable ir5 = new InfoRunnable(200,hops);
-        InfoRunnable ir6 = new InfoRunnable(200,malt);
-        InfoRunnable ir7 = new InfoRunnable(200,wheat);
-        InfoRunnable ir8 = new InfoRunnable(200,yeast);
-        InfoRunnable ir9 = new InfoRunnable(200,humidity);
-        InfoRunnable ir10 = new InfoRunnable(200, temperature);
-        InfoRunnable ir11 = new InfoRunnable(200, vibration);
-        executor.execute(ir1);
-        executor.execute(ir2);
-        executor.execute(ir3);
-        executor.execute(ir4);
-        executor.execute(ir5);
-        executor.execute(ir6);
-        executor.execute(ir7);
-        executor.execute(ir8);
-        executor.execute(ir9);
-        executor.execute(ir10);
-        executor.execute(ir11);
+        executor.execute(domainHandler.handleRunnable(200, totalProduced));
+        executor.execute(domainHandler.handleRunnable(200, currentStatus));
+        executor.execute(domainHandler.handleRunnable(200, totalDefect));
+        executor.execute(domainHandler.handleRunnable(200, barley));
+        executor.execute(domainHandler.handleRunnable(200, hops));
+        executor.execute(domainHandler.handleRunnable(200, malt));
+        executor.execute(domainHandler.handleRunnable(200, wheat));
+        executor.execute(domainHandler.handleRunnable(200, yeast));
+        executor.execute(domainHandler.handleRunnable(200, humidity));
+        executor.execute(domainHandler.handleRunnable(200, temperature));
+        executor.execute(domainHandler.handleRunnable(200, vibration));
 
     }
 

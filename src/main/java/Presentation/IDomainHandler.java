@@ -21,5 +21,6 @@ public interface IDomainHandler {
 
    float readValue(String someString);
 
-   InfoRunnable HandleRunnable(int sleepTime, Text textID);
+   InfoRunnable handleRunnable(int sleepTime, Text tf);
+
 }

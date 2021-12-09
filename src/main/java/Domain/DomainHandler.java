@@ -5,6 +5,8 @@ import Presentation.IDomainHandler;
 import javafx.scene.text.Text;
 
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class DomainHandler implements IDomainHandler {
     private static DomainHandler instance;
@@ -12,9 +14,9 @@ public class DomainHandler implements IDomainHandler {
     Write writeToNode = new Write();
     Read readFromNode = new Read();
     Subscription subscripeToNode = new Subscription();
-    
-    public static DomainHandler getInstance(){
-        if (instance == null){
+
+    public static DomainHandler getInstance() {
+        if (instance == null) {
             instance = new DomainHandler();
         }
         return instance;
@@ -41,7 +43,7 @@ public class DomainHandler implements IDomainHandler {
     }
 
     @Override
-    public List<DefaultProduct> listOfDefaultProducts(){
+    public List<DefaultProduct> listOfDefaultProducts() {
         return persistenceHandler.queryAllDefaultProducts();
     }
 
@@ -51,11 +53,9 @@ public class DomainHandler implements IDomainHandler {
     }
 
     @Override
-    public InfoRunnable HandleRunnable(int sleepTime, Text tf){
+    public InfoRunnable handleRunnable(int sleepTime, Text tf) {
         return new InfoRunnable(sleepTime, tf);
+
     }
-
-
-
 
 }
