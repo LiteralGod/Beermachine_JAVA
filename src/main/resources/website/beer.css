@@ -1,0 +1,202 @@
+body {
+    background-color: #565252;
+}
+
+div {
+    color: #fff;
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    padding: 10px;
+}
+.view {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px 20px;
+}
+.beer-selection {
+
+}
+.main-header {
+    background-color: black;
+    height: 75px;
+    border: 2px solid #402428;
+}
+.main-header-text {
+    color:#FFCC99;
+    font-family: Stencil, sans-serif;
+    font-size: 35px;
+    margin-left: 10px;
+}
+.category-header {
+    background-color: #3B3838;
+}
+.category-label {
+    color: #FFCC99;
+    font-family: "Arial Black", sans-serif;
+    font-size: 22px;
+}
+.login-header{
+    background-color: #402428;
+    height: 42px;
+    margin-top: 5px;
+}
+
+.login_header_text {
+    color:#F5643D;
+    font-family: "Arial Black", sans-serif;
+    font-size: 22px;
+    padding-left: 10px;
+}
+
+.beer-mug {
+    height: 80px;
+    float:right;
+    margin-right: 70px;
+    margin-top: 10px;
+}
+
+.column {
+    background-color: #767171;
+    border: 2px solid #402428;
+    margin-top:25px;
+}
+
+.container {
+    background-color:#312b2b;
+    display: flex;
+    margin-bottom: -5px;
+ }
+
+.flex-item {
+    background-color:#767171;
+    flex-grow: 1;
+    margin: 5px;
+}
+
+.users-link{
+    padding: 4px 50px 4px 50px;
+}
+
+.button{
+    background-color: #FB8D33;
+    color: #3B3838;
+    font-family: "Arial Black", sans-serif;
+    font-size: 22px;
+    padding: 4px 20px 4px 20px;
+    border-radius: 6px 6px 6px 6px;
+    float: right;
+}
+.choice {
+    color: #3B3838;
+    font-family: "Arial Black", sans-serif;
+    margin-bottom: 5px;
+    margin-left: 4px;
+    font-size: 20px;
+}
+.beer-type {
+    border-radius:4px;
+    background:#F5643D;
+    color: #3B3838;
+    width: 250px;
+    height: 30px;
+    font-family: "Arial Black", sans-serif;
+    font-size: 15px;
+}
+
+.production-box{
+    color: #3B3838;
+    font-family: "Arial Black", sans-serif;
+    font-size: 20px;
+    padding-left: 10px;
+}
+
+.production-started-box{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.info-grid-left {
+    margin-top:10px;
+    color: #3B3838;
+    font-family: "Arial Black", sans-serif;
+}
+
+.info-grid-right {
+    color: #3B3838;
+    font-family: "Arial Black", sans-serif;
+    margin-top:10px;
+    margin-left:25px;
+}
+.production-buttons {
+    color: #3B3838;
+    font-family: "Arial Black", sans-serif;
+    font-size: 20px;
+    padding-left: 10px;
+    margin-top: 20px;
+}
+.button {
+    background-color: #FB8D33;
+    color: #3B3838;
+    font-family: "Arial Black", sans-serif;
+    font-size: 22px;
+    padding: 4px 20px 4px 20px;
+    border-radius: 6px 6px 6px 6px;
+}
+.start-button {
+    margin-left: 20px;
+    float:left;
+}
+.stop_button{
+    margin-left: 20px;
+    float: left;
+}
+.pause_button{
+    margin-left: 20px;
+    float: left;
+}
+.reset_button{
+    margin-left: 20px;
+    float:left;
+}
+.back-link {
+    margin-left: 20px;
+    float:right;
+}
+.refill-button {
+    float:left;
+}
+.sensors {
+    background-color:#312b2b;
+}
+.sensor-sub {
+    background-color:#767171;
+    margin-left: 6px;
+    margin-right: 6px;
+    margin-top: -10px;
+}
+.sensor-header {
+    background-color: #3B3838;
+}
+.sensor-label {
+    color: #FFCC99;
+    font-family: "Arial Black", sans-serif;
+    font-size: 22px;
+}
+.sensor-box {
+    color: #3B3838;
+    font-family: "Arial Black", sans-serif;
+}
+.sensor-box-section {
+    background-color:#767171;
+    color: #3B3838;
+    font-family: "Arial Black", sans-serif;
+    font-size: 20px;
+}
+.ingredient-box {
+    background-color:#767171;
+    color: #3B3838;
+    font-family: "Arial Black", sans-serif;
+    font-size: 20px;
+}
+.production-button {
+    float: left;
+}
