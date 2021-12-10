@@ -1,15 +1,24 @@
 <%@ page import="Persistence.PersistenceHandler" %>
+<%@ page import="Domain.BeerType" %>
+<%@ page import="java.util.List" %>
+<%@ page import="Domain.DomainHandler" %>
 <%@ page language="java" contentType="text/html; ISO-8859-1" %>
-<style><%@include file="beer.css"%></style>
+<style><%@include file="../css/beer.css"%></style>
+<script><%@include file="../js/beer.js"%></script>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <title>Beer machine</title>
-    <link rel="stylesheet" href="beer.css">
+    <link rel="stylesheet" href="../css/beer.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+    <% String productType = request.getParameter("beer_selection"); %>
+
+    <%! PersistenceHandler persistenceHandler = new PersistenceHandler(); %>
+    <% List<BeerType> beerTypes = persistenceHandler.queryAllBeerTypes(); %>
+    <%! DomainHandler domainHandler = new DomainHandler(); %>
 </head>
 
 <body>
@@ -32,26 +41,23 @@
             <div class="beer-choice">
                 <label for="beer_selection" class="choice">Choose beer type:</label><br>
                 <select id="beer_selection" name="beer_selection" class="beer-type">
-                    <option value="pilsner">Pilsner</option>
-                    <option value="wheat">Wheat</option>
-                    <option value="ipa">IPA</option>
-                    <option value="stout">Stout</option>
-                    <option value="ale">Ale</option>
-                    <option value="alcohol_free">Alcohol Free</option>
-                    <%  %>
+                    <% if (beerTypes != null) { for (BeerType bt: beerTypes) { %>
+                        <option><% out.println(bt.getType()); %></option>
+                    <% }} %>
                 </select>
             </div>
             <div class="production-box">
                 <div class="production-box">
                     <div class="production-started-box">
                         <div class="info-grid-left">
-                            <p>
+                            <p id="amountPara">
                                 <label>Product amount: <% out.println(); %></label>
                             </p>
-                            <p>
-                                <label>Product type: <% out.println(); %></label>
+                            <p id="typePara">
+                                <label id="product_label">Product type: </label>
+                                <label id="product"></label>
                             </p>
-                            <p>
+                            <p id="speedPara">
                                 <label>Production speed: <% out.println(); %></label>
                             </p>
                         </div>
@@ -70,10 +76,13 @@
                 </div>
 
                 <div class="production-buttons">
-                    <button class="start-button button" type="submit">Start</button>
-                    <button class="stop_button button" type="submit">Stop</button>
-                    <button class="pause_button button" type="submit">Pause</button>
-                    <button class="reset_button button" type="submit">Reset</button>
+                    <button id="startButton" class="start-button button" type="button" onclick="getSelectedProduct(); <% // domainHandler.StartMachine(); %>">Start</button>
+                    <button class="stop_button button" type="button"
+                        onclick="<% domainHandler.StopMachine(); %>">Stop</button>
+                    <button class="pause_button button" type="button"
+                        onclick="<%  %>">Pause</button>
+                    <button class="reset_button button" type="button"
+                        onclick="resetProductionPage(); <% domainHandler.ResetMachine(); %>">Reset</button>
                     <a href="/">
                         <button class="back-link button">Back</button>
                     </a>

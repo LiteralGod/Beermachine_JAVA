@@ -1,13 +1,13 @@
 <%@ page import="Persistence.PersistenceHandler" %>
 <%@ page language="java" contentType="text/html; ISO-8859-1" %>
-<style><%@include file="beer.css"%></style>
+<style><%@include file="../css/beer.css"%></style>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <title>Beer machine</title>
-    <link rel="stylesheet" href="beer.css">
+    <link rel="stylesheet" href="../css/beer.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 </head>
@@ -23,14 +23,29 @@
     </div>
 
     <div class="container">
-
         <div class="flex-item column">
             <div class="category-header">
                 <label class="category-label">Production</label>
             </div>
+            <div class="production-box">
+                <div class="production-box">
+                    <div class="admin_command_menu">
+                        <div class="admin_menu">
+                            <a href="/production">
+                                <button class="admin_menu_item button">Production</button>
+                            </a><br>
+                            <button class="admin_menu_item button" onclick="<%  %>">
+                                Batches
+                            </button><br>
+                            <button class="admin_menu_item button" onclick="<%  %>">
+                                Maintenance
+                            </button>
+                        </div>
+                        <div class="info-grid-right">
 
-            <div>
-                <a href="/production"><button class="production-button button">Production</button></a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 

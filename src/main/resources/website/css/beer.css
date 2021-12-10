@@ -83,7 +83,7 @@ div {
     font-size: 22px;
     padding: 4px 20px 4px 20px;
     border-radius: 6px 6px 6px 6px;
-    float: right;
+    /*float: right;*/
 }
 .choice {
     color: #3B3838;
@@ -199,4 +199,18 @@ div {
 }
 .production-button {
     float: left;
+}
+.admin_menu_item{
+    margin-bottom: 20px;
+    width: 200px;
+    float:left;
+    text-align: left;
+}
+.admin_command_menu{
+    display: grid;
+    grid-template-columns: 35% 65%;
+    column-gap: 20px;
+}
+.admin_menu{
+    border-radius: 6px 6px 6px 6px;
 }
