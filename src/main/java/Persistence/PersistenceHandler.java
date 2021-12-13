@@ -5,7 +5,6 @@ import Domain.BeerType;
 import Domain.DefaultProduct;
 import Domain.IPersistenceHandler;
 
-import javax.xml.transform.Result;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -51,12 +50,48 @@ public class PersistenceHandler implements IPersistenceHandler {
 
     @Override
     public List<Batch> queryAllBatches() {
-        return null;
+        try {
+            PreparedStatement stmt = connectionHandler.getConnection().prepareStatement(
+                    "SELECT * FROM batches"
+            );
+            ResultSet sqlReturnValues = stmt.executeQuery();
+
+            List<Batch> returnValue = new ArrayList<>();
+
+            while (sqlReturnValues.next()){
+                returnValue.add(new Batch(
+                        sqlReturnValues.getInt(1),
+                        sqlReturnValues.getString(2),
+                        sqlReturnValues.getInt(3),
+                        sqlReturnValues.getInt(4),
+                        sqlReturnValues.getInt(5)));
+            }
+            return returnValue;
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return null;
+        }
     }
 
     @Override
-    public void insertBatch() {
+    public void insertBatch(int currentBatchID, String productName, int totalAmount, int totalGood, int totalBad) {
+        try {
+            PreparedStatement stmt = connectionHandler.getConnection().prepareStatement(
+                    "INSERT INTO batches(batchID, productName, totalAmount, goodAmount, badAmount)" +
+                            "VALUES (?, ?, ?, ?, ?)");
 
+            stmt.setInt(1, currentBatchID);
+            stmt.setString(2, productName);
+            stmt.setInt(3, totalAmount);
+            stmt.setInt(4, totalGood);
+            stmt.setInt(5, totalBad);
+
+            stmt.execute();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
 

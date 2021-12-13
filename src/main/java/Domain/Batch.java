@@ -1,28 +1,34 @@
 package Domain;
 
 public class Batch {
-    int nextBatchID;
     int currentBatchID;
     String batchName;
-    int[] batchOutput;
+    int totalAmount;
+    int totalGood;
+    int totalBad;
 
-    public Batch(int nextBatchID, int currentBatchID, String batchName, int[] batchOutput) {
-        this.nextBatchID = nextBatchID;
+    public Batch(int currentBatchID, String batchName, int totalAmount, int totalGood, int totalBad) {
         this.currentBatchID = currentBatchID;
         this.batchName = batchName;
-        this.batchOutput = batchOutput;
+        this.totalAmount = totalAmount;
+        this.totalGood = totalGood;
+        this.totalBad = totalBad;
     }
 
     public int getCurrentBatchID() {
         return currentBatchID;
     }
 
-    public int[] getBatchOutput() {
-        return batchOutput;
+    public int getTotalAmount() {
+        return totalAmount;
     }
 
-    public void setNextBatchID(int nextBatchID) {
-        this.nextBatchID = nextBatchID;
+    public int getTotalGood() {
+        return totalGood;
+    }
+
+    public int getTotalBad() {
+        return totalBad;
     }
 
     public void setBatchName(String batchName) {

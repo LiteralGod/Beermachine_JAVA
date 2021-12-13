@@ -13,7 +13,7 @@ import java.util.List;
 public interface IPersistenceHandler {
     List<BeerType> queryAllBeerTypes();
     List<Batch> queryAllBatches();
-    void insertBatch();
+    void insertBatch(int currentBatchID, String productName, int totalAmount, int totalGood, int totalBad);
 
     BeerType getBeerType(int id);
 
