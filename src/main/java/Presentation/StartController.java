@@ -7,10 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -37,6 +34,9 @@ public class StartController implements Initializable {
 
     @FXML
     private TextField beerSpeed, beerAmount;
+
+    @FXML
+    private ListView batchListView;
 
     @FXML
     private ObservableList<BeerType> beerTypeObservableList;
@@ -94,12 +94,6 @@ public class StartController implements Initializable {
     public void ResetMachine() {
         domainHandler.ResetMachine();
     }
-
-    @FXML
-    public void totalCount() {
-        // subscription.Subscribe();
-    }
-
 
     @FXML
     public void setDefaultProduct(ActionEvent event) {
