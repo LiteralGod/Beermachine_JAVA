@@ -1,4 +1,4 @@
-function getSelectedProduct() {
+function appendSelectedProduct() {
     let tag = document.createElement('label');
     let sel = document.getElementById('beer_selection');
     let txt = document.createTextNode(sel.options[sel.selectedIndex].text);
@@ -13,7 +13,13 @@ function resetProductionPage() {
     type.removeChild(type.lastChild);
 }
 
-function showHide(id) {
-    let elem = document.getElementById(id);
-    elem.style.display = (elem.style.display !== 'none') ? 'none' : 'block';
+function getSelectedBeerType() {
+    let sel = document.getElementById('beer_selection');
+
+    return document.createTextNode(sel.options[sel.selectedIndex].text);
+}
+
+function executeRefill() {
+
+    return null;
 }

@@ -2,6 +2,7 @@
 <%@ page import="Domain.BeerType" %>
 <%@ page import="java.util.List" %>
 <%@ page import="Domain.DomainHandler" %>
+<%@ page import="Domain.Subscription" %>
 <%@ page language="java" contentType="text/html; ISO-8859-1" %>
 <style><%@include file="../css/beer.css"%></style>
 <script><%@include file="../js/beer.js"%></script>
@@ -17,8 +18,9 @@
     <% String productType = request.getParameter("beer_selection"); %>
 
     <%! PersistenceHandler persistenceHandler = new PersistenceHandler(); %>
-    <% List<BeerType> beerTypes = persistenceHandler.queryAllBeerTypes(); %>
     <%! DomainHandler domainHandler = new DomainHandler(); %>
+    <%! Subscription subscription = new Subscription(); %>
+    <% List<BeerType> beerTypes = persistenceHandler.queryAllBeerTypes(); %>
 </head>
 
 <body>
@@ -76,9 +78,9 @@
                 </div>
 
                 <div class="production-buttons">
-                    <button id="startButton" class="start-button button" type="button" onclick="getSelectedProduct(); <% // domainHandler.StartMachine(); %>">Start</button>
+                    <button id="startButton" class="start-button button" type="button" onclick="appendSelectedProduct(); <% // domainHandler.StartMachine(); %>">Start</button>
                     <button class="stop_button button" type="button"
-                        onclick="<% domainHandler.StopMachine(); %>">Stop</button>
+                        onclick="resetProductionPage() <% domainHandler.StopMachine(); %>">Stop</button>
                     <button class="pause_button button" type="button"
                         onclick="<%  %>">Pause</button>
                     <button class="reset_button button" type="button"
@@ -92,12 +94,12 @@
 
         <div class="flex-item column">
             <div class="ingredient-box">
-                <p>Barley: <%  %></p>
-                <p>Hops: <%  %></p>
-                <p>Malt: <%  %></p>
-                <p>Wheat: <%  %></p>
-                <p>Yeast: <%  %></p>
-                <button class="refill-button button">Refill</button>
+                <p>Barley: <% subscription.barley(); %></p>
+                <p>Hops: <% subscription.hops(); %></p>
+                <p>Malt: <% subscription.malt(); %></p>
+                <p>Wheat: <% subscription.wheat(); %></p>
+                <p>Yeast: <% subscription.yeast(); %></p>
+                <button class="refill-button button" onclick="executeRefill()">Refill</button>
             </div>
         </div>
     </div>
@@ -113,19 +115,19 @@
                     <p>
                         <label>Temperature: </label>
                         <label>
-                            <% out.println("temp sensor"); %>
+                            <% subscription.temperature(); %>
                         </label>
                     </p>
                     <p>
                         <label>Humidity: </label>
                         <label>
-                            <% out.println("humidity sensor"); %>
+                            <% subscription.humidity(); %>
                         </label>
                     </p>
                     <p>
                         <label>Vibration: </label>
                         <label>
-                            <% out.println("Vibration sensor"); %>
+                            <% subscription.vibration(); %>
                         </label>
                     </p>
                 </div>
