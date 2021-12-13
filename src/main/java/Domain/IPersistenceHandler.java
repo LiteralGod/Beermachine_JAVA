@@ -14,6 +14,7 @@ public interface IPersistenceHandler {
     List<BeerType> queryAllBeerTypes();
     List<Batch> queryAllBatches();
     void insertBatch(int currentBatchID, String productName, int totalAmount, int totalGood, int totalBad);
+    void deleteBatch(int batchID);
 
     BeerType getBeerType(int id);
 

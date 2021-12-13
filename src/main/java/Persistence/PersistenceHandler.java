@@ -94,6 +94,21 @@ public class PersistenceHandler implements IPersistenceHandler {
         }
     }
 
+    @Override
+    public void deleteBatch(int batchID) {
+        try {
+            PreparedStatement stmt = connectionHandler.getConnection().prepareStatement(
+                    "DELETE FROM batches WHERE ID = ?");
+
+            stmt.setInt(1, batchID);
+
+            stmt.execute();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
 
     @Override
     public BeerType getBeerType(int id){
