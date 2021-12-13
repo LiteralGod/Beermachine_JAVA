@@ -40,6 +40,10 @@ public class InfoRunnable implements Runnable {
             case "barley" -> {
                 subscripeToNode.barley();
             }
+            case "totalGood" ->{
+                subscripeToNode.totalGood();
+            }
+
             case "hops" -> subscripeToNode.hops();
             case "malt" -> subscripeToNode.malt();
             case "wheat" ->subscripeToNode.wheat();
@@ -55,7 +59,7 @@ public class InfoRunnable implements Runnable {
                 @Override
                 public void run() {
                     switch (tf.getId()) {
-                        case "totalProduced", "totalDefect", "currentStatus" -> {
+                        case "totalProduced", "totalDefect", "currentStatus", "totalGood" -> {
                             tf.setText(String.valueOf(subscripeToNode.getIntNodeValue()));
                         }
                         case "barley", "hops", "malt", "wheat", "yeast" -> {

@@ -13,6 +13,15 @@ create table default_product(
     defaultAmount INTEGER NOT NULL
 );
 
+create table batches(
+    id serial PRIMARY KEY,
+    batchID INTEGER NOT NULL,
+    productName varchar(50) references beer_type(name),
+    totalAmount integer not null,
+    goodAmount integer not null,
+    badAmount integer not null
+);
+
 
 INSERT INTO beer_type(name)
 values ('Pilsner'),
@@ -29,4 +38,6 @@ values(1, 456, 500),
        (4,86,500),
        (5, 84, 500),
        (6,85,500);
+
+
 

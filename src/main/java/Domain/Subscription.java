@@ -161,6 +161,9 @@ public class Subscription {
     public void totalDefect(){
         this.connectInt("ns=6;s=::Program:Cube.Admin.ProdDefectiveCount");
     }
+    public void totalGood(){
+        this.connectInt("ns=6;s=::Program:product.good");
+    }
     public void currentStatus(){
         this.connectInt("ns=6;s=::Program:Cube.Status.StateCurrent");
 

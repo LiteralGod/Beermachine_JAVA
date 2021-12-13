@@ -55,7 +55,6 @@ public class DomainHandler implements IDomainHandler {
     @Override
     public InfoRunnable handleRunnable(int sleepTime, Text tf) {
         return new InfoRunnable(sleepTime, tf);
-
     }
 
 }
