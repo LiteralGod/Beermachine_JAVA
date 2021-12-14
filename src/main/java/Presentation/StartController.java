@@ -30,13 +30,14 @@ public class StartController implements Initializable {
     private ChoiceBox<BeerType> beerType;
 
     @FXML
-    private Text totalGood, totalDefect, totalProduced, currentStatus, temperature, humidity, vibration, barley, hops, malt, wheat, yeast, maintenance;
+    private Text totalGood, totalDefect, totalProduced, currentStatus, temperature, humidity, vibration, barley, hops, malt, wheat, yeast, maintenance,
+    batch_batchID, batch_productProduced, batch_speed, batch_totalAmount, batch_totalGood, batch_totalBad;
 
     @FXML
     private TextField beerSpeed, beerAmount;
 
     @FXML
-    private ListView batchListView;
+    private ListView<Batch> batchListView;
 
     @FXML
     private ObservableList<BeerType> beerTypeObservableList;
@@ -132,6 +133,17 @@ public class StartController implements Initializable {
                 }
             }
         });
+    }
+
+    public void setBatchData(ActionEvent e){
+        if(batchListView.getSelectionModel().getSelectedItem() != null) {
+            batch_batchID.setText(String.valueOf(batchListView.getSelectionModel().getSelectedItem().getCurrentBatchID()));
+            batch_productProduced.setText(batchListView.getSelectionModel().getSelectedItem().getBatchName());
+            batch_speed.setText(String.valueOf(batchListView.getSelectionModel().getSelectedItem().getProdSpeed()));
+            batch_totalAmount.setText(String.valueOf(batchListView.getSelectionModel().getSelectedItem().getTotalAmount()));
+            batch_totalGood.setText(String.valueOf(batchListView.getSelectionModel().getSelectedItem().getTotalGood()));
+            batch_totalBad.setText(String.valueOf(batchListView.getSelectionModel().getSelectedItem().getTotalBad()));
+        }
     }
 
     public void saveBatch(){

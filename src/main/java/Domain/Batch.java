@@ -24,6 +24,10 @@ public class Batch {
         this.totalBad = totalBad;
     }
 
+    public String getBatchName() {
+        return batchName;
+    }
+
     public int getCurrentBatchID() {
         return currentBatchID;
     }
