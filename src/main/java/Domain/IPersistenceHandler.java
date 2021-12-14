@@ -11,4 +11,6 @@ public interface IPersistenceHandler {
     BeerType getBeerType(int id);
 
     List<DefaultProduct> queryAllDefaultProducts();
+
+    Integer queryHighestBatchID();
 }

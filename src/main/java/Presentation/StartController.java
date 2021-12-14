@@ -30,7 +30,7 @@ public class StartController implements Initializable {
     private ChoiceBox<BeerType> beerType;
 
     @FXML
-    private Text totalGood, totalDefect, totalProduced, currentStatus, temperature, humidity, vibration, barley, hops, malt, wheat, yeast;
+    private Text totalGood, totalDefect, totalProduced, currentStatus, temperature, humidity, vibration, barley, hops, malt, wheat, yeast, maintenance;
 
     @FXML
     private TextField beerSpeed, beerAmount;
@@ -136,7 +136,7 @@ public class StartController implements Initializable {
 
     public void saveBatch(){
         domainHandler.insertBatch(
-                1,
+                domainHandler.highestBatchId() + 1,
                 beerType.getValue().getType(),
                 Integer.parseInt(beerSpeed.getText()),
                 Integer.parseInt(totalProduced.getText()),
@@ -151,7 +151,7 @@ public class StartController implements Initializable {
     }
 
     public void handleThreads() {
-        ExecutorService executor = Executors.newFixedThreadPool(12);
+        ExecutorService executor = Executors.newFixedThreadPool(13);
         executor.execute(domainHandler.handleRunnable(200, currentStatus));
         executor.execute(domainHandler.handleRunnable(200, totalProduced));
         executor.execute(domainHandler.handleRunnable(200, totalDefect));
@@ -164,6 +164,7 @@ public class StartController implements Initializable {
         executor.execute(domainHandler.handleRunnable(200, humidity));
         executor.execute(domainHandler.handleRunnable(200, temperature));
         executor.execute(domainHandler.handleRunnable(200, vibration));
+        executor.execute(domainHandler.handleRunnable(200, maintenance));
 
     }
 

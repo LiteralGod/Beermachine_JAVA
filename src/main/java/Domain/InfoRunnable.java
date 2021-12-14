@@ -40,8 +40,8 @@ public class InfoRunnable implements Runnable {
             case "barley" -> {
                 subscripeToNode.barley();
             }
-            case "totalGood" ->{
-                subscripeToNode.totalGood();
+            case "maintenance" ->{
+                subscripeToNode.maintenance();
             }
 
             case "hops" -> subscripeToNode.hops();
@@ -68,6 +68,9 @@ public class InfoRunnable implements Runnable {
                         }
                         case "humidity", "temperature", "vibration" -> {
                             tf.setText(String.valueOf(subscripeToNode.getFloatNodeValue()));
+                        }
+                        case "maintenance" ->{
+                            tf.setText(String.valueOf(subscripeToNode.getShortNodeValue()));
                         }
                         default -> setNodeValue(0);
                     }

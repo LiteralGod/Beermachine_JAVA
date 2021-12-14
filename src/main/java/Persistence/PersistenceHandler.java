@@ -161,4 +161,23 @@ public class PersistenceHandler implements IPersistenceHandler {
             return null;
         }
     }
+
+    @Override
+    public Integer queryHighestBatchID(){
+        try {
+            PreparedStatement stmt = connectionHandler.getConnection().prepareStatement(
+                    "SELECT MAX(batchID) FROM batches"
+            );
+
+            ResultSet sqlReturnValues = stmt.executeQuery();
+            sqlReturnValues.next();
+            return sqlReturnValues.getInt(1);
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return null;
+        }
+
+    }
 }

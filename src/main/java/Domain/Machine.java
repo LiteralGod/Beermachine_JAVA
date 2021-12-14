@@ -17,7 +17,7 @@ import org.slf4j.Logger;
 
 public class Machine {
     List<EndpointDescription> endpoints;
-    String prefix = "opc.tcp";
+    String prefix = "opc.tcp://";
     String hostName = "192.168.0.122";
     int port = 4840;
     String nsString = "ns=6;s=::Program:";
@@ -35,8 +35,8 @@ public class Machine {
             endpoints = DiscoveryClient.getEndpoints(prefix + hostName).get();
             EndpointDescription configPoint = EndpointUtil.updateUrl(endpoints.get(0), hostName, port);
             OpcUaClientConfigBuilder cfg = new OpcUaClientConfigBuilder();
-            client = OpcUaClient.create(cfg.build());
             cfg.setEndpoint(configPoint);
+            client = OpcUaClient.create(cfg.build());
             client.connect().get();
         } catch (Throwable ex) {
             ex.printStackTrace();
@@ -62,6 +62,7 @@ public class Machine {
     }
 
     public void StartMachine(float beerTypeID, float setSpeed, float setAmount) {
+        this.connect();
         try {
             //Set beerType
             NodeId nodeId2 = NodeId.parse(nsString + "Cube.Command.Parameter[1].Value");
@@ -95,6 +96,7 @@ public class Machine {
     }
 
     public void StopMachine() {
+        this.connect();
         try {
             NodeId nodeId1 = NodeId.parse(nsString + "Cube.Command.CntrlCmd");
             client.writeValue(nodeId1, DataValue.valueOnly(new Variant(3))).get();
@@ -107,6 +109,7 @@ public class Machine {
     }
 
     public void ResetMachine() {
+        this.connect();
         try {
             NodeId nodeId1 = NodeId.parse(nsString + "Cube.Command.CntrlCmd");
             client.writeValue(nodeId1, DataValue.valueOnly(new Variant(1))).get();

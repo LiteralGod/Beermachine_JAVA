@@ -27,4 +27,6 @@ public interface IDomainHandler {
    List<Batch> listOfBatches();
 
    Batch insertBatch(int batchID, String beerType, int speed, int totalAmount, int totalGood, int totalBad);
+
+   int highestBatchId();
 }

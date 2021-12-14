@@ -42,4 +42,5 @@ values(1, 456, 500),
        (6,85,500);
 
 INSERT INTO batches(batchID, productName, speed, totalAmount, goodAmount, badAmount)
-values (1, (select name from beer_type where id =1), 250, 500, 400, 100);
+values (1, (select name from beer_type where id =1), 250, 500, 400, 100),
+       (2, (select name from beer_type where id =1), 250, 500, 400, 100);

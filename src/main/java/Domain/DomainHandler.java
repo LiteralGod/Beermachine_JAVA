@@ -5,8 +5,6 @@ import Presentation.IDomainHandler;
 import javafx.scene.text.Text;
 
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class DomainHandler implements IDomainHandler {
     private static DomainHandler instance;
@@ -64,5 +62,10 @@ public class DomainHandler implements IDomainHandler {
     @Override
     public Batch insertBatch(int batchID, String beerType, int speed, int totalAmount, int totalGood, int totalBad){
         return persistenceHandler.insertBatch(batchID, beerType, speed, totalAmount, totalGood, totalBad);
+    }
+
+    @Override
+    public int highestBatchId(){
+        return persistenceHandler.queryHighestBatchID();
     }
 }
