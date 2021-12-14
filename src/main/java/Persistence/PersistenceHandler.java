@@ -64,7 +64,9 @@ public class PersistenceHandler implements IPersistenceHandler {
                         sqlReturnValues.getString(2),
                         sqlReturnValues.getInt(3),
                         sqlReturnValues.getInt(4),
-                        sqlReturnValues.getInt(5)));
+                        sqlReturnValues.getInt(5),
+                        sqlReturnValues.getInt(6)
+                ));
             }
             return returnValue;
 
@@ -75,15 +77,16 @@ public class PersistenceHandler implements IPersistenceHandler {
     }
 
     @Override
-    public void insertBatch(int currentBatchID, String productName, int totalAmount, int totalGood, int totalBad) {
+    public void insertBatch(int currentBatchID, String productName, int prodSpeed, int totalAmount, int totalGood, int totalBad) {
         try {
             PreparedStatement stmt = connectionHandler.getConnection().prepareStatement(
-                    "INSERT INTO batches(batchID, productName, totalAmount, goodAmount, badAmount)" +
-                            "VALUES (?, ?, ?, ?, ?)");
+                    "INSERT INTO batches(batchID, productName, prodSpeed, totalAmount, goodAmount, badAmount)" +
+                            "VALUES (?, ?, ?, ?, ?, ?)");
 
             stmt.setInt(1, currentBatchID);
             stmt.setString(2, productName);
             stmt.setInt(3, totalAmount);
+            stmt.setInt(4, prodSpeed);
             stmt.setInt(4, totalGood);
             stmt.setInt(5, totalBad);
 
