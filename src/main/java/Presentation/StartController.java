@@ -20,7 +20,7 @@ import java.util.concurrent.Executors;
 
 public class StartController implements Initializable {
     @FXML
-    private Button startBtn, abortBtn, stopBtn, resetBtn, testBtn;
+    private Button startBtn, abortBtn, stopBtn, resetBtn, testBtn, saveBtn;
     @FXML
     private Label speedError;
 
@@ -134,6 +134,22 @@ public class StartController implements Initializable {
         });
     }
 
+    public void saveBatch(){
+        domainHandler.insertBatch(
+                1,
+                beerType.getValue().getType(),
+                Integer.parseInt(beerSpeed.getText()),
+                Integer.parseInt(totalProduced.getText()),
+                Integer.parseInt(totalGood.getText()),
+                Integer.parseInt(totalDefect.getText()));
+        updateListView();
+    }
+
+    public void updateListView(){
+        listOfBatchesObservableList = FXCollections.observableArrayList(domainHandler.listOfBatches());
+        batchListView.setItems(listOfBatchesObservableList);
+    }
+
     public void handleThreads() {
         ExecutorService executor = Executors.newFixedThreadPool(12);
         executor.execute(domainHandler.handleRunnable(200, currentStatus));
@@ -161,8 +177,7 @@ public class StartController implements Initializable {
         beerChoice.setItems(defaultProductObservableList);
         beerChoice.setValue(defaultProductObservableList.get(0));
         this.handleThreads();
-        listOfBatchesObservableList = FXCollections.observableArrayList(domainHandler.listOfBatches());
-        batchListView.setItems(listOfBatchesObservableList);
+        updateListView();
 
     }
 }

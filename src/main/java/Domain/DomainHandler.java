@@ -61,4 +61,8 @@ public class DomainHandler implements IDomainHandler {
     public List<Batch> listOfBatches(){
         return persistenceHandler.queryAllBatches();
     }
+    @Override
+    public Batch insertBatch(int batchID, String beerType, int speed, int totalAmount, int totalGood, int totalBad){
+        return persistenceHandler.insertBatch(batchID, beerType, speed, totalAmount, totalGood, totalBad);
+    }
 }

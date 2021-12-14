@@ -25,4 +25,6 @@ public interface IDomainHandler {
    InfoRunnable handleRunnable(int sleepTime, Text tf);
 
    List<Batch> listOfBatches();
+
+   Batch insertBatch(int batchID, String beerType, int speed, int totalAmount, int totalGood, int totalBad);
 }
