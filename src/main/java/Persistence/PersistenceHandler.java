@@ -60,12 +60,12 @@ public class PersistenceHandler implements IPersistenceHandler {
 
             while (sqlReturnValues.next()){
                 returnValue.add(new Batch(
-                        sqlReturnValues.getInt(1),
-                        sqlReturnValues.getString(2),
-                        sqlReturnValues.getInt(3),
+                        sqlReturnValues.getInt(2),
+                        sqlReturnValues.getString(3),
                         sqlReturnValues.getInt(4),
                         sqlReturnValues.getInt(5),
-                        sqlReturnValues.getInt(6)
+                        sqlReturnValues.getInt(6),
+                        sqlReturnValues.getInt(7)
                 ));
             }
             return returnValue;
@@ -77,24 +77,25 @@ public class PersistenceHandler implements IPersistenceHandler {
     }
 
     @Override
-    public void insertBatch(int currentBatchID, String productName, int prodSpeed, int totalAmount, int totalGood, int totalBad) {
+    public Batch insertBatch(int currentBatchID, String productName, int prodSpeed, int totalAmount, int totalGood, int totalBad) {
         try {
             PreparedStatement stmt = connectionHandler.getConnection().prepareStatement(
-                    "INSERT INTO batches(batchID, productName, prodSpeed, totalAmount, goodAmount, badAmount)" +
+                    "INSERT INTO batches(batchID, productName, speed, totalAmount, goodAmount, badAmount)" +
                             "VALUES (?, ?, ?, ?, ?, ?)");
 
             stmt.setInt(1, currentBatchID);
             stmt.setString(2, productName);
             stmt.setInt(3, totalAmount);
             stmt.setInt(4, prodSpeed);
-            stmt.setInt(4, totalGood);
-            stmt.setInt(5, totalBad);
+            stmt.setInt(5, totalGood);
+            stmt.setInt(6, totalBad);
 
             stmt.execute();
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+        return null;
     }
 
     @Override

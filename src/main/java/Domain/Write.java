@@ -21,8 +21,8 @@ public class Write {
 
     public void StartMachine(float beerTypeID, float setSpeed, float setAmount) {
         try {
-            List<EndpointDescription> endpoints = DiscoveryClient.getEndpoints("opc.tcp://127.0.0.1:4840").get();
-            EndpointDescription configPoint = EndpointUtil.updateUrl(endpoints.get(0), "127.0.0.1", 4840);
+            List<EndpointDescription> endpoints = DiscoveryClient.getEndpoints("opc.tcp://192.168.0.122:4840").get();
+            EndpointDescription configPoint = EndpointUtil.updateUrl(endpoints.get(0), "192.168.0.122", 4840);
             OpcUaClientConfigBuilder cfg = new OpcUaClientConfigBuilder();
             cfg.setEndpoint(configPoint);
 
@@ -64,8 +64,8 @@ public class Write {
 
     public void StopMachine() {
         try {
-            List<EndpointDescription> endpoints = DiscoveryClient.getEndpoints("opc.tcp://127.0.0.1:4840").get();
-            EndpointDescription configPoint = EndpointUtil.updateUrl(endpoints.get(0), "127.0.0.1", 4840);
+            List<EndpointDescription> endpoints = DiscoveryClient.getEndpoints("opc.tcp://192.168.0.122:4840").get();
+            EndpointDescription configPoint = EndpointUtil.updateUrl(endpoints.get(0), "192.168.0.122", 4840);
             OpcUaClientConfigBuilder cfg = new OpcUaClientConfigBuilder();
             cfg.setEndpoint(configPoint);
 
@@ -86,8 +86,8 @@ public class Write {
 
     public void ResetMachine() {
         try {
-            List<EndpointDescription> endpoints = DiscoveryClient.getEndpoints("opc.tcp://127.0.0.1:4840").get();
-            EndpointDescription configPoint = EndpointUtil.updateUrl(endpoints.get(0), "127.0.0.1", 4840);
+            List<EndpointDescription> endpoints = DiscoveryClient.getEndpoints("opc.tcp://192.168.0.122:4840").get();
+            EndpointDescription configPoint = EndpointUtil.updateUrl(endpoints.get(0), "192.168.0.122", 4840);
             OpcUaClientConfigBuilder cfg = new OpcUaClientConfigBuilder();
             cfg.setEndpoint(configPoint);
 

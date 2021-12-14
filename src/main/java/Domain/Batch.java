@@ -10,6 +10,11 @@ public class Batch {
     int totalGood;
     int totalBad;
 
+    @Override
+    public String toString() {
+        return "Id: " + currentBatchID + " Product: " + batchName;
+    }
+
     public Batch(int currentBatchID, String batchName, int prodSpeed, int totalAmount, int totalGood, int totalBad) {
         this.currentBatchID = currentBatchID;
         this.batchName = batchName;
