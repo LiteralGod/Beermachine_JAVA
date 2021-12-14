@@ -1,5 +1,7 @@
 package Domain;
 
+import Persistence.PersistenceHandler;
+
 public class Batch {
     int currentBatchID;
     String batchName;
@@ -41,15 +43,15 @@ public class Batch {
         this.batchName = batchName;
     }
 
-    public void showBatchID(int batchID) {
-
+    public Batch showBatch (int batchID) {
+        return PersistenceHandler.getInstance().queryAllBatches().get(batchID);
     }
 
     public void showAllBatches() {
-
+        PersistenceHandler.getInstance().queryAllBatches();
     }
 
     public void deleteBatch(int batchID) {
-
+        PersistenceHandler.getInstance().deleteBatch(batchID);
     }
 }
