@@ -12,7 +12,7 @@ public class Batch {
 
     @Override
     public String toString() {
-        return currentBatchID + " " + batchName;
+        return "Id: " + currentBatchID + " Product: " + batchName;
     }
 
     public Batch(int currentBatchID, String batchName, int prodSpeed, int totalAmount, int totalGood, int totalBad) {

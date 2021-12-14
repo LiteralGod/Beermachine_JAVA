@@ -28,6 +28,7 @@ import org.eclipse.milo.opcua.stack.core.types.structured.MonitoringParameters;
 import org.eclipse.milo.opcua.stack.core.types.structured.ReadValueId;
 import org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.UInteger;
 import org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.Unsigned;
+import org.eclipse.milo.opcua.stack.core.util.EndpointUtil;
 
 public class Subscription {
 
@@ -55,9 +56,9 @@ public class Subscription {
     public void connectFloat(String nodeValue) {
         try {
             List<EndpointDescription> endpoints = DiscoveryClient.getEndpoints("opc.tcp://192.168.0.122:4840").get();
-            
+            EndpointDescription configPoint = EndpointUtil.updateUrl(endpoints.get(0), "192.168.0.122", 4840);
             OpcUaClientConfigBuilder cfg = new OpcUaClientConfigBuilder();
-            cfg.setEndpoint(endpoints.get(0));
+            cfg.setEndpoint(configPoint);
 
             OpcUaClient client = OpcUaClient.create(cfg.build());
             client.connect().get();
@@ -102,9 +103,9 @@ public class Subscription {
     public void connectInt(String nodeValue) {
         try {
             List<EndpointDescription> endpoints = DiscoveryClient.getEndpoints("opc.tcp://192.168.0.122:4840").get();
-
+            EndpointDescription configPoint = EndpointUtil.updateUrl(endpoints.get(0), "192.168.0.122", 4840);
             OpcUaClientConfigBuilder cfg = new OpcUaClientConfigBuilder();
-            cfg.setEndpoint(endpoints.get(0));
+            cfg.setEndpoint(configPoint);
 
             OpcUaClient client = OpcUaClient.create(cfg.build());
             client.connect().get();
