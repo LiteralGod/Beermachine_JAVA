@@ -17,6 +17,7 @@ create table batches(
     id serial PRIMARY KEY,
     batchID INTEGER NOT NULL,
     productName varchar(50) references beer_type(name),
+    speed integer not null,
     totalAmount integer not null,
     goodAmount integer not null,
     badAmount integer not null
@@ -39,5 +40,7 @@ values(1, 456, 500),
        (5, 84, 500),
        (6,85,500);
 
+INSERT INTO batches(batchID, productName, totalAmount, speed, goodAmount, badAmount)
+values (1, 'Pilsner', 500, 400, 100)
 
 
