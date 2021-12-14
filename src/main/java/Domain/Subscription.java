@@ -166,11 +166,9 @@ public class Subscription {
     }
     public void currentStatus(){
         this.connectInt("ns=6;s=::Program:Cube.Status.StateCurrent");
-
     }
     public void humidity(){
         this.connectFloat("ns=6;s=::Program:Cube.Status.Parameter[2].Value");
-
     }
     public void temperature(){
         this.connectFloat("ns=6;s=::Program:Cube.Status.Parameter[3].Value");

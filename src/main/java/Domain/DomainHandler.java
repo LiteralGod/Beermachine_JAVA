@@ -11,8 +11,8 @@ import java.util.concurrent.Executors;
 public class DomainHandler implements IDomainHandler {
     private static DomainHandler instance;
     IPersistenceHandler persistenceHandler = PersistenceHandler.getInstance();
-    Write writeToNode = new Write();
-    Read readFromNode = new Read();
+    Machine writeToNode = new Machine();
+    Machine readFromNode = new Machine();
     Subscription subscripeToNode = new Subscription();
 
     public static DomainHandler getInstance() {
