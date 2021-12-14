@@ -57,4 +57,8 @@ public class DomainHandler implements IDomainHandler {
         return new InfoRunnable(sleepTime, tf);
     }
 
+    @Override
+    public List<Batch> listOfBatches(){
+        return persistenceHandler.queryAllBatches();
+    }
 }

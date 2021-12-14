@@ -42,6 +42,8 @@ public class StartController implements Initializable {
     private ObservableList<BeerType> beerTypeObservableList;
     @FXML
     private ObservableList<DefaultProduct> defaultProductObservableList;
+    @FXML
+    private ObservableList<Batch> listOfBatchesObservableList;
 
     IDomainHandler domainHandler = new DomainHandler();
 
@@ -159,6 +161,8 @@ public class StartController implements Initializable {
         beerChoice.setItems(defaultProductObservableList);
         beerChoice.setValue(defaultProductObservableList.get(0));
         this.handleThreads();
+        listOfBatchesObservableList = FXCollections.observableArrayList(domainHandler.listOfBatches());
+        batchListView.setItems(listOfBatchesObservableList);
 
     }
 }
