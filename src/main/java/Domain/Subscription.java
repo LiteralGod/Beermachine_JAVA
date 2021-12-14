@@ -65,7 +65,7 @@ public class Subscription {
         this.floatNodeValue = floatNodeValue;
     }
 
-    public void connectFloat(String nodeValue) {
+    /*public void connectFloat(String nodeValue) {
         try {
             List<EndpointDescription> endpoints = DiscoveryClient.getEndpoints("opc.tcp://192.168.0.122:4840").get();
             EndpointDescription configPoint = EndpointUtil.updateUrl(endpoints.get(0), "192.168.0.122", 4840);
@@ -111,8 +111,8 @@ public class Subscription {
         } catch (Throwable ex) {
             ex.printStackTrace();
         }
-    }
-    public void connectInt(String nodeValue) {
+    }*/
+    /*public void connectInt(String nodeValue) {
         try {
             List<EndpointDescription> endpoints = DiscoveryClient.getEndpoints("opc.tcp://192.168.0.122:4840").get();
             EndpointDescription configPoint = EndpointUtil.updateUrl(endpoints.get(0), "192.168.0.122", 4840);
@@ -159,6 +159,9 @@ public class Subscription {
             ex.printStackTrace();
         }
     }
+    */
+
+    /*
     public void connectChar(String nodeValue) {
         try {
             List<EndpointDescription> endpoints = DiscoveryClient.getEndpoints("opc.tcp://192.168.0.122:4840").get();
@@ -206,7 +209,9 @@ public class Subscription {
             ex.printStackTrace();
         }
     }
+    */
 
+    /*
     private void onSubscriptionValueFloat(UaMonitoredItem item, DataValue value) {
         this.setFloatNodeValue((Float) value.getValue().getValue());
     }
@@ -263,7 +268,5 @@ public class Subscription {
 
     public void yeast(){
         this.connectFloat("ns=6;s=::Program:Inventory.Yeast");
-
-    }
-
+    }*/
 }
