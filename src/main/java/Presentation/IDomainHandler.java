@@ -1,5 +1,6 @@
 package Presentation;
 
+import Domain.Batch;
 import Domain.BeerType;
 import Domain.DefaultProduct;
 import Domain.InfoRunnable;
@@ -23,4 +24,5 @@ public interface IDomainHandler {
 
    InfoRunnable handleRunnable(int sleepTime, Text tf);
 
+   List<Batch> listOfBatches();
 }

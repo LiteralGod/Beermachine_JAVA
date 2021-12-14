@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS beer_type CASCADE;
 DROP TABLE IF EXISTS default_product CASCADE;
+DROP TABLE IF EXISTS batches CASCADE;
 
 create table beer_type(
     id SERIAL PRIMARY KEY,
@@ -40,7 +41,5 @@ values(1, 456, 500),
        (5, 84, 500),
        (6,85,500);
 
-INSERT INTO batches(batchID, productName, totalAmount, speed, goodAmount, badAmount)
-values (1, 'Pilsner', 500, 400, 100)
-
-
+INSERT INTO batches(batchID, productName, speed, totalAmount, goodAmount, badAmount)
+values (1, (select name from beer_type where id =1), 250, 500, 400, 100);
