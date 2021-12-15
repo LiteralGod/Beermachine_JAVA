@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface IDomainHandler {
 
-   void StartMachine(float beerType, float beerSpeed, float setAmount);
+   void StartMachine(float beerType, float beerSpeed, float setAmount, float batchID);
 
    void StopMachine();
 
@@ -20,7 +20,7 @@ public interface IDomainHandler {
 
    List<DefaultProduct> listOfDefaultProducts();
 
-   float readValue(String someString);
+   float readBatchId();
 
    InfoRunnable handleRunnable(int sleepTime, Text tf);
 

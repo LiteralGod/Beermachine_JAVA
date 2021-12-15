@@ -18,13 +18,10 @@ import org.slf4j.Logger;
 public class Machine {
     List<EndpointDescription> endpoints;
     String prefix = "opc.tcp://";
-    String hostName = "192.168.0.122";
+    String hostName = "127.0.0.1";
     int port = 4840;
     String nsString = "ns=6;s=::Program:";
     Variant variant;
-
-    NodeId nodeId = NodeId.parse(nsString + "Cube.Admin.ProdProcessedCount");
-    NodeId nodeId1 = NodeId.parse(nsString + "Cube.Status.StateCurrent");
 
     DataValue dataValue;
     OpcUaClient client;
@@ -43,27 +40,11 @@ public class Machine {
         }
     }
 
-    public int readNode(String someString) {
+    public void StartMachine(float beerTypeID, float setSpeed, float setAmount, float batchID) {
         this.connect();
         try {
-            if (someString.equals("totalProduced")) {
-                dataValue = client.readValue(0, TimestampsToReturn.Both, nodeId)
-                        .get();
-            } else {
-                dataValue = client.readValue(0, TimestampsToReturn.Both, nodeId1)
-                        .get();
-            }
 
-            variant = dataValue.getValue();
-        } catch (Throwable ex) {
-            ex.printStackTrace();
-        }
-        return (int) variant.getValue();
-    }
 
-    public void StartMachine(float beerTypeID, float setSpeed, float setAmount) {
-        this.connect();
-        try {
             //Set beerType
             NodeId nodeId2 = NodeId.parse(nsString + "Cube.Command.Parameter[1].Value");
             client.writeValue(nodeId2, DataValue.valueOnly(new Variant(beerTypeID))).get();
@@ -78,8 +59,12 @@ public class Machine {
             if (setAmount != 0) {
                 NodeId nodeId4 = NodeId.parse(nsString + "Cube.Command.Parameter[2].Value");
                 client.writeValue(nodeId4, DataValue.valueOnly(new Variant(setAmount))).get();
-
             }
+
+            //set Batch ID
+            NodeId nodeId5 = NodeId.parse(nsString + "Cube.Command.Parameter[0].Value");
+            client.writeValue(nodeId5, DataValue.valueOnly(new Variant(batchID))).get();
+
 
 
             //Start request
@@ -93,6 +78,19 @@ public class Machine {
         } catch (Throwable ex) {
             ex.printStackTrace();
         }
+    }
+    public float readBatchID() {
+        this.connect();
+        try {
+            NodeId nodeId = NodeId.parse(nsString + "Cube.Status.Parameter[0].Value");
+            dataValue = client.readValue(0, TimestampsToReturn.Both, nodeId)
+                    .get();
+            variant = dataValue.getValue();
+        } catch (Throwable ex) {
+            ex.printStackTrace();
+        }
+        System.out.println(variant.getValue());
+        return (float) variant.getValue();
     }
 
     public void StopMachine() {

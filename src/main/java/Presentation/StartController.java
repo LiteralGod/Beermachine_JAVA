@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -22,7 +23,7 @@ public class StartController implements Initializable {
     @FXML
     private Button startBtn, abortBtn, stopBtn, resetBtn, testBtn, saveBtn;
     @FXML
-    private Label speedError;
+    private Label speedError, statusError;
 
     @FXML
     private ChoiceBox<DefaultProduct> beerChoice;
@@ -31,7 +32,7 @@ public class StartController implements Initializable {
 
     @FXML
     private Text totalGood, totalDefect, totalProduced, currentStatus, temperature, humidity, vibration, barley, hops, malt, wheat, yeast, maintenance,
-    batch_batchID, batch_productProduced, batch_speed, batch_totalAmount, batch_totalGood, batch_totalBad;
+    batch_batchID, batch_productProduced, batch_speed, batch_totalAmount, batch_totalGood, batch_totalBad, currentBatchId;
 
     @FXML
     private TextField beerSpeed, beerAmount;
@@ -59,8 +60,15 @@ public class StartController implements Initializable {
     public void StartMachine() {
         if (beerSpeed.getText().isEmpty()) {
             speedError.setVisible(true);
-        } else {
+
+        }
+        else if (!currentStatus.getText().equals(String.valueOf(4))){
+            statusError.setVisible(true);
             speedError.setVisible(false);
+        }
+        else {
+            speedError.setVisible(false);
+            statusError.setVisible(false);
             float beerTypeID = 0;
             switch (beerType.getValue().toString()) {
                 case "Pilsner" -> {
@@ -83,7 +91,9 @@ public class StartController implements Initializable {
                 }
 
             }
-            domainHandler.StartMachine(beerTypeID, Float.parseFloat(beerSpeed.getText()), Float.parseFloat(beerAmount.getText()));
+            System.out.println(domainHandler.highestBatchId());
+            domainHandler.StartMachine(beerTypeID, Float.parseFloat(beerSpeed.getText()), Float.parseFloat(beerAmount.getText()), domainHandler.highestBatchId() + 1);
+            currentBatchId.setText(String.valueOf(domainHandler.readBatchId()));
         }
     }
 
@@ -134,8 +144,8 @@ public class StartController implements Initializable {
             }
         });
     }
-
-    public void setBatchData(ActionEvent e){
+    @FXML
+    public void setBatchData(MouseEvent e){
         if(batchListView.getSelectionModel().getSelectedItem() != null) {
             batch_batchID.setText(String.valueOf(batchListView.getSelectionModel().getSelectedItem().getCurrentBatchID()));
             batch_productProduced.setText(batchListView.getSelectionModel().getSelectedItem().getBatchName());
@@ -176,7 +186,6 @@ public class StartController implements Initializable {
         executor.execute(domainHandler.handleRunnable(200, humidity));
         executor.execute(domainHandler.handleRunnable(200, temperature));
         executor.execute(domainHandler.handleRunnable(200, vibration));
-        executor.execute(domainHandler.handleRunnable(200, maintenance));
 
     }
 
