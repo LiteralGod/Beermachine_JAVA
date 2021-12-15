@@ -68,4 +68,23 @@ public class DomainHandler implements IDomainHandler {
     public int highestBatchId(){
         return persistenceHandler.queryHighestBatchID();
     }
+
+    @Override
+    public void insertTemperature(int batchID, float value){
+        persistenceHandler.insertTemperature(batchID, value);
+    }
+
+    @Override
+    public void insertHumidity(int batchID, float value){
+        persistenceHandler.insertHumidity(batchID, value);
+    }
+
+    @Override
+    public List<Temperature> selectTemperature(int batchID){
+        return persistenceHandler.getTemperatures(batchID);
+    }
+    @Override
+    public List<Humidity> selectHumidity(int batchID){
+        return persistenceHandler.getHumidity(batchID);
+    }
 }

@@ -1,9 +1,6 @@
 package Presentation;
 
-import Domain.Batch;
-import Domain.BeerType;
-import Domain.DefaultProduct;
-import Domain.InfoRunnable;
+import Domain.*;
 import javafx.scene.text.Text;
 
 import java.util.List;
@@ -29,4 +26,12 @@ public interface IDomainHandler {
    Batch insertBatch(int batchID, String beerType, int speed, int totalAmount, int totalGood, int totalBad);
 
    int highestBatchId();
+
+   void insertTemperature(int batchID, float value);
+
+   void insertHumidity(int batchID, float value);
+
+    List<Humidity> selectHumidity(int batchID);
+
+   List<Temperature> selectTemperature(int batchID);
 }

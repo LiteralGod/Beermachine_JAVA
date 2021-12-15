@@ -14,7 +14,6 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -32,7 +31,7 @@ public class StartController implements Initializable {
 
     @FXML
     private Text totalGood, totalDefect, totalProduced, currentStatus, temperature, humidity, vibration, barley, hops, malt, wheat, yeast, maintenance,
-    batch_batchID, batch_productProduced, batch_speed, batch_totalAmount, batch_totalGood, batch_totalBad, currentBatchId;
+            batch_batchID, batch_productProduced, batch_speed, batch_totalAmount, batch_totalGood, batch_totalBad, currentBatchId;
 
     @FXML
     private TextField beerSpeed, beerAmount;
@@ -41,11 +40,22 @@ public class StartController implements Initializable {
     private ListView<Batch> batchListView;
 
     @FXML
+    private ListView<Temperature> temperatureListView;
+    @FXML
+    private ListView<Humidity> humidityListView;
+
+
+
+    @FXML
     private ObservableList<BeerType> beerTypeObservableList;
     @FXML
     private ObservableList<DefaultProduct> defaultProductObservableList;
     @FXML
     private ObservableList<Batch> listOfBatchesObservableList;
+    @FXML
+    private ObservableList<Temperature> listOfTemperatureObservableList;
+    @FXML
+    private ObservableList<Humidity> listOfHumidityObservableList;
 
     IDomainHandler domainHandler = new DomainHandler();
 
@@ -61,12 +71,10 @@ public class StartController implements Initializable {
         if (beerSpeed.getText().isEmpty()) {
             speedError.setVisible(true);
 
-        }
-        else if (!currentStatus.getText().equals(String.valueOf(4))){
+        } else if (!currentStatus.getText().equals(String.valueOf(4))) {
             statusError.setVisible(true);
             speedError.setVisible(false);
-        }
-        else {
+        } else {
             speedError.setVisible(false);
             statusError.setVisible(false);
             float beerTypeID = 0;
@@ -93,7 +101,11 @@ public class StartController implements Initializable {
             }
             System.out.println(domainHandler.highestBatchId());
             domainHandler.StartMachine(beerTypeID, Float.parseFloat(beerSpeed.getText()), Float.parseFloat(beerAmount.getText()), domainHandler.highestBatchId() + 1);
-            currentBatchId.setText(String.valueOf(domainHandler.readBatchId()));
+            currentBatchId.setText(String.valueOf(domainHandler.highestBatchId() + 1));
+            ExecutorService executor = Executors.newFixedThreadPool(2);
+            executor.execute(this.handleTemperatureBatchData(5000));
+            executor.execute(this.handleHumidityBatchData(5000));
+
         }
     }
 
@@ -144,19 +156,88 @@ public class StartController implements Initializable {
             }
         });
     }
+
     @FXML
-    public void setBatchData(MouseEvent e){
-        if(batchListView.getSelectionModel().getSelectedItem() != null) {
+    public Thread handleTemperatureBatchData(int sleepTime) {
+        return new Thread(new Runnable() {
+            @Override
+            public void run() {
+                boolean running = true;
+                System.out.println(running);
+                while (running) {
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            domainHandler.insertTemperature(Integer.parseInt(currentBatchId.getText()), Float.parseFloat(temperature.getText()));
+                        }
+                    });
+                    synchronized (this) {
+                        try {
+                            Thread.sleep(sleepTime);
+                            if (!currentStatus.getText().equals("6")) {
+                                running = false;
+                                System.out.println(running);
+                                saveBatch();
+                            }
+                        } catch (InterruptedException e) {
+                            System.out.println(Thread.currentThread() + " Has been stopped");
+                            running = false;
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    @FXML
+    public Thread handleHumidityBatchData(int sleepTime) {
+        return new Thread(new Runnable() {
+            @Override
+            public void run() {
+                boolean running = true;
+                System.out.println(running);
+                while (running) {
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            domainHandler.insertHumidity(Integer.parseInt(currentBatchId.getText()), Float.parseFloat(humidity.getText()));
+                        }
+                    });
+
+                    synchronized (this) {
+                        try {
+                            Thread.sleep(sleepTime);
+                            if (!currentStatus.getText().equals("6")) {
+                                running = false;
+                                System.out.println(running);
+                                System.out.println(totalProduced.getText());
+                            }
+                        } catch (InterruptedException e) {
+                            System.out.println(Thread.currentThread() + " Has been stopped");
+                            running = false;
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    @FXML
+    public void setBatchData(MouseEvent e) {
+        if (batchListView.getSelectionModel().getSelectedItem() != null) {
             batch_batchID.setText(String.valueOf(batchListView.getSelectionModel().getSelectedItem().getCurrentBatchID()));
             batch_productProduced.setText(batchListView.getSelectionModel().getSelectedItem().getBatchName());
             batch_speed.setText(String.valueOf(batchListView.getSelectionModel().getSelectedItem().getProdSpeed()));
             batch_totalAmount.setText(String.valueOf(batchListView.getSelectionModel().getSelectedItem().getTotalAmount()));
             batch_totalGood.setText(String.valueOf(batchListView.getSelectionModel().getSelectedItem().getTotalGood()));
             batch_totalBad.setText(String.valueOf(batchListView.getSelectionModel().getSelectedItem().getTotalBad()));
+            updateHumidityListView();
+            updateTempListView();
         }
     }
 
-    public void saveBatch(){
+    public void saveBatch() {
         domainHandler.insertBatch(
                 domainHandler.highestBatchId() + 1,
                 beerType.getValue().getType(),
@@ -164,12 +245,20 @@ public class StartController implements Initializable {
                 Integer.parseInt(totalProduced.getText()),
                 Integer.parseInt(totalGood.getText()),
                 Integer.parseInt(totalDefect.getText()));
-        updateListView();
     }
 
-    public void updateListView(){
+    public void updateListView() {
         listOfBatchesObservableList = FXCollections.observableArrayList(domainHandler.listOfBatches());
         batchListView.setItems(listOfBatchesObservableList);
+    }
+
+    public void updateTempListView() {
+        listOfTemperatureObservableList = FXCollections.observableArrayList(domainHandler.selectTemperature(batchListView.getSelectionModel().getSelectedItem().getCurrentBatchID()));
+        temperatureListView.setItems(listOfTemperatureObservableList);
+    }
+    public void updateHumidityListView() {
+        listOfHumidityObservableList = FXCollections.observableArrayList(domainHandler.selectHumidity(batchListView.getSelectionModel().getSelectedItem().getCurrentBatchID()));
+        humidityListView.setItems(listOfHumidityObservableList);
     }
 
     public void handleThreads() {
@@ -200,6 +289,5 @@ public class StartController implements Initializable {
         beerChoice.setValue(defaultProductObservableList.get(0));
         this.handleThreads();
         updateListView();
-
     }
 }
