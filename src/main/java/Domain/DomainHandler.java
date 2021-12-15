@@ -21,8 +21,8 @@ public class DomainHandler implements IDomainHandler {
     }
 
     @Override
-    public void StartMachine(float beerType, float beerSpeed, float setAmount) {
-        writeToNode.StartMachine(beerType, beerSpeed, setAmount);
+    public void StartMachine(float beerType, float beerSpeed, float setAmount, float batchID) {
+        writeToNode.StartMachine(beerType, beerSpeed, setAmount,batchID);
     }
 
     @Override
@@ -46,8 +46,8 @@ public class DomainHandler implements IDomainHandler {
     }
 
     @Override
-    public float readValue(String someString) {
-        return readFromNode.readNode(someString);
+    public float readBatchId(){
+        return readFromNode.readBatchID();
     }
 
     @Override
