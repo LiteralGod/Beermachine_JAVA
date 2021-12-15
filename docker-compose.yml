@@ -1,10 +1,10 @@
 version: "3.8"
 services:
   database:
-    image: mysql:8.0.18
     container_name: database
+    build:
+      context: /src/main/resources/init-sql/
     environment:
       MYSQL_DATABASE: beermachine
-      MYSQL_ROOT_PASSWORD: secret
     ports:
       - "3306:3306"
