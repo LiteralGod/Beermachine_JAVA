@@ -295,7 +295,7 @@ public class Machine {
         this.connect();
         try {
             NodeId nodeId = NodeId.parse(nsString + "Cube.Status.Parameter[0].Value");
-            dataValue = client.readValue(0, TimestampsToReturn.Both, nodeId)
+            dataValue = connect().readValue(0, TimestampsToReturn.Both, nodeId)
                     .get();
             variant = dataValue.getValue();
         } catch (Throwable ex) {
@@ -303,19 +303,6 @@ public class Machine {
         }
         System.out.println(variant.getValue());
         return (float) variant.getValue();
-    }
-
-    public void StopMachine() {
-        this.connect();
-        try {
-            NodeId nodeId1 = NodeId.parse(nsString + "Cube.Command.CntrlCmd");
-            client.writeValue(nodeId1, DataValue.valueOnly(new Variant(3))).get();
-
-            NodeId nodeId2 = NodeId.parse(nsString + "Cube.Command.CmdChangeRequest");
-            client.writeValue(nodeId2, DataValue.valueOnly(new Variant(true))).get();
-        } catch (Throwable ex) {
-            ex.printStackTrace();
-        }
     }
 
     public void StartMachine(float beerTypeID, float setSpeed, float setAmount) {
@@ -339,6 +326,9 @@ public class Machine {
 
             }
 
+            //set Batch ID
+            NodeId nodeId5 = NodeId.parse(nsString + "Cube.Command.Parameter[0].Value");
+            connect().writeValue(nodeId5, DataValue.valueOnly(new Variant(batchID))).get();
 
             //Start request
             NodeId nodeId1 = NodeId.parse(nsString + "Cube.Command.CntrlCmd");
