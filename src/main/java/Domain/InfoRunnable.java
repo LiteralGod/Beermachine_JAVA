@@ -27,30 +27,20 @@ public class InfoRunnable implements Runnable {
     @Override
     public void run() {
         switch (tf.getId()) {
-            case "totalProduced" -> {
-                subscribeToNode.totalProduced();
-
-            }
-            case "totalDefect" -> {
-                subscribeToNode.totalDefect();
-            }
-            case "currentStatus" -> {
-                subscribeToNode.currentStatus();
-            }
-            case "barley" -> {
-                subscribeToNode.barley();
-            }
-            case "maintenance" ->{
-                subscribeToNode.maintenance();
-            }
-
+            case "totalProduced" -> subscribeToNode.totalProduced();
+            case "totalDefect" -> subscribeToNode.totalDefect();
+            case "currentStatus" -> subscribeToNode.currentStatus();
+            
+            case "barley" -> subscribeToNode.barley();
             case "hops" -> subscribeToNode.hops();
             case "malt" -> subscribeToNode.malt();
             case "wheat" -> subscribeToNode.wheat();
             case "yeast" -> subscribeToNode.yeast();
+
             case "humidity" -> subscribeToNode.humidity();
             case "temperature" -> subscribeToNode.temperature();
             case "vibration" -> subscribeToNode.vibration();
+            case "maintenance" -> subscribeToNode.maintenance();
             default -> setNodeValue(0);
 
         }
