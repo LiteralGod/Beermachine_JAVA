@@ -305,7 +305,7 @@ public class Machine {
         return (float) variant.getValue();
     }
 
-    public void StartMachine(float beerTypeID, float setSpeed, float setAmount) {
+    public void StartMachine(float beerTypeID, float setSpeed, float setAmount, float batchID) {
         try {
             this.connect();
 
