@@ -291,6 +291,33 @@ public class Machine {
         return (int) variant.getValue();
     }
 
+    public float readBatchID() {
+        this.connect();
+        try {
+            NodeId nodeId = NodeId.parse(nsString + "Cube.Status.Parameter[0].Value");
+            dataValue = client.readValue(0, TimestampsToReturn.Both, nodeId)
+                    .get();
+            variant = dataValue.getValue();
+        } catch (Throwable ex) {
+            ex.printStackTrace();
+        }
+        System.out.println(variant.getValue());
+        return (float) variant.getValue();
+    }
+
+    public void StopMachine() {
+        this.connect();
+        try {
+            NodeId nodeId1 = NodeId.parse(nsString + "Cube.Command.CntrlCmd");
+            client.writeValue(nodeId1, DataValue.valueOnly(new Variant(3))).get();
+
+            NodeId nodeId2 = NodeId.parse(nsString + "Cube.Command.CmdChangeRequest");
+            client.writeValue(nodeId2, DataValue.valueOnly(new Variant(true))).get();
+        } catch (Throwable ex) {
+            ex.printStackTrace();
+        }
+    }
+
     public void StartMachine(float beerTypeID, float setSpeed, float setAmount) {
         try {
             this.connect();
