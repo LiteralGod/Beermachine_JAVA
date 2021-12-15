@@ -33,6 +33,7 @@ import org.eclipse.milo.opcua.stack.core.util.EndpointUtil;
 
 public class Subscription {
 
+    /*
     float floatNodeValue;
 
     int intNodeValue;
@@ -64,8 +65,10 @@ public class Subscription {
     public void setFloatNodeValue(float floatNodeValue) {
         this.floatNodeValue = floatNodeValue;
     }
+    */
 
-    /*public void connectFloat(String nodeValue) {
+    /*
+    public void connectFloat(String nodeValue) {
         try {
             List<EndpointDescription> endpoints = DiscoveryClient.getEndpoints("opc.tcp://127.0.0.1:4840").get();
             EndpointDescription configPoint = EndpointUtil.updateUrl(endpoints.get(0), "127.0.0.1", 4840);
