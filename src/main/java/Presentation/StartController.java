@@ -66,6 +66,14 @@ public class StartController implements Initializable {
             statusError.setVisible(true);
             speedError.setVisible(false);
         }
+        else if (currentStatus.getText().equals(String.valueOf(11))){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Maintenance needed!");
+            alert.setContentText("The machine needs Maintenance!\n" +
+                    "Please inspect the machine before starting!");
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        }
         else {
             speedError.setVisible(false);
             statusError.setVisible(false);
