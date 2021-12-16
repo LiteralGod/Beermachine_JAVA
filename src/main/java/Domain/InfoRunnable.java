@@ -40,7 +40,7 @@ public class InfoRunnable implements Runnable {
             case "humidity" -> subscribeToNode.humidity();
             case "temperature" -> subscribeToNode.temperature();
             case "vibration" -> subscribeToNode.vibration();
-            case "maintenance" -> subscribeToNode.maintenance();
+            //case "maintenance" -> subscribeToNode.maintenance();
             default -> setNodeValue(0);
 
         }

@@ -168,6 +168,8 @@ public class Machine {
         }
     }
 
+    /* is not needed for the core functionality, as we use the stop-reason to check for maintenance
+
     public void subscriptionChar (String nodeValue) {
         try {
             this.connect();
@@ -209,6 +211,7 @@ public class Machine {
             ex.printStackTrace();
         }
     }
+    */
 
     private void onSubscriptionValueFloat(UaMonitoredItem item, DataValue value) {
         this.setFloatNodeValue((Float) value.getValue().getValue());
@@ -268,9 +271,12 @@ public class Machine {
         this.subscriptionFloat(nsString + "Inventory.Yeast");
     }
 
+    /* is not needed for the core functionality, as we use the stop-reason to check for maintenance
+
     public void maintenance(){
         this.subscriptionChar(nsString + "Maintenance.Counter");
     }
+    */
 
     public int readNode(String someString) {
         try {

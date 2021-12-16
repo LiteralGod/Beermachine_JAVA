@@ -93,7 +93,7 @@
                               <Font size="28.0" />
                            </font></Text>
                         <Button fx:id="saveBtn" layoutX="384.0" layoutY="293.0" mnemonicParsing="false" onAction="#saveBatch" style="-fx-background-color: #00ff00;" text="Save" textFill="WHITE" />
-                        <Text fx:id="maintenance" fill="WHITE" layoutX="505.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <!--<Text fx:id="maintenance" fill="WHITE" layoutX="505.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />-->
                         <Label fx:id="statusError" layoutX="16.0" layoutY="141.0" text="Please reset to status 4" textFill="#bf2323" visible="false">
                            <font>
                               <Font size="10.0" />
