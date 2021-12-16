@@ -9,7 +9,7 @@
    <children>
       <ImageView fitHeight="597.0" fitWidth="561.0" layoutX="45.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="file:/C:/Users/cyber/OneDrive/Skrivebord/Beermachine_JAVA/Beermachine_JAVA/src/main/resources/Pictures/stateChart.png" />
+            <Image url="file:src/main/resources/Pictures/stateChart.png" />
          </image>
       </ImageView>
    </children>
