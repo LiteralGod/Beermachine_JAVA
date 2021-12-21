@@ -304,7 +304,6 @@ public class StartController implements Initializable {
         executor.execute(domainHandler.handleRunnable(200, humidity));
         executor.execute(domainHandler.handleRunnable(200, temperature));
         executor.execute(domainHandler.handleRunnable(200, vibration));
-
     }
 
 

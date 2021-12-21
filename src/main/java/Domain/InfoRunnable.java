@@ -77,5 +77,4 @@ public class InfoRunnable implements Runnable {
             }
         }
     }
-
 }

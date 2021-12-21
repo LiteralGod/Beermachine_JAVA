@@ -21,7 +21,6 @@
       <artifactId>junit</artifactId>
       <version>4.11</version>
       <scope>test</scope>
-
     </dependency>
 
     <dependency>
@@ -29,21 +28,25 @@
       <artifactId>javafx-controls</artifactId>
       <version>16</version>
     </dependency>
+
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-fxml</artifactId>
       <version>16</version>
     </dependency>
+
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-base</artifactId>
       <version>16</version>
     </dependency>
+
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
       <version>8.0.18</version>
     </dependency>
+
     <dependency>
       <groupId>org.eclipse.milo</groupId>
       <artifactId>sdk-client</artifactId>
@@ -93,6 +96,7 @@
       <version>4.0.1</version>
       <scope>provided</scope>
     </dependency>
+
     <dependency>
       <groupId>javax.websocket</groupId>
       <artifactId>javax.websocket-api</artifactId>
@@ -100,10 +104,7 @@
       <scope>provided</scope>
     </dependency>
 
-
   </dependencies>
-
-
 
   <build>
     <sourceDirectory>src/main/java</sourceDirectory>
@@ -116,6 +117,7 @@
           <release>15</release>
         </configuration>
       </plugin>
+
       <plugin>
         <groupId>org.openjfx</groupId>
         <artifactId>javafx-maven-plugin</artifactId>
@@ -124,6 +126,7 @@
           <mainClass>Presentation.FXMain</mainClass>
         </configuration>
       </plugin>
+
     </plugins>
   </build>
 </project>
