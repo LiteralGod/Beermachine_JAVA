@@ -139,6 +139,14 @@ public class StartController implements Initializable {
     public void ResetMachine() {
         domainHandler.ResetMachine();
     }
+    @FXML
+    public void AbortMachine() {
+        domainHandler.AbortMachine();
+    }
+    @FXML
+    public void ClearMachine() {
+        domainHandler.ClearMachine();
+    }
 
     @FXML
     public void setDefaultProduct(ActionEvent event) {

@@ -13,6 +13,10 @@ public interface IDomainHandler {
 
    void ResetMachine();
 
+   void AbortMachine();
+
+   void ClearMachine();
+
    List<BeerType> ListOfBeerTypes();
 
    List<DefaultProduct> listOfDefaultProducts();

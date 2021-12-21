@@ -36,6 +36,16 @@ public class DomainHandler implements IDomainHandler {
     }
 
     @Override
+    public void AbortMachine() {
+        writeToNode.AbortMachine();
+    }
+    @Override
+    public void ClearMachine() {
+        writeToNode.ClearMachine();
+    }
+
+
+    @Override
     public List<BeerType> ListOfBeerTypes() {
         return persistenceHandler.queryAllBeerTypes();
     }

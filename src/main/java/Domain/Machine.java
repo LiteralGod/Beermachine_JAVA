@@ -118,4 +118,29 @@ public class Machine {
             ex.printStackTrace();
         }
     }
+
+    public void AbortMachine() {
+        this.connect();
+        try {
+            NodeId nodeId1 = NodeId.parse(nsString + "Cube.Command.CntrlCmd");
+            client.writeValue(nodeId1, DataValue.valueOnly(new Variant(4))).get();
+
+            NodeId nodeId2 = NodeId.parse(nsString + "Cube.Command.CmdChangeRequest");
+            client.writeValue(nodeId2, DataValue.valueOnly(new Variant(true))).get();
+        } catch (Throwable ex) {
+            ex.printStackTrace();
+        }
+    }
+    public void ClearMachine() {
+        this.connect();
+        try {
+            NodeId nodeId1 = NodeId.parse(nsString + "Cube.Command.CntrlCmd");
+            client.writeValue(nodeId1, DataValue.valueOnly(new Variant(5))).get();
+
+            NodeId nodeId2 = NodeId.parse(nsString + "Cube.Command.CmdChangeRequest");
+            client.writeValue(nodeId2, DataValue.valueOnly(new Variant(true))).get();
+        } catch (Throwable ex) {
+            ex.printStackTrace();
+        }
+    }
 }

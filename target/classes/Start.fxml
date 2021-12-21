@@ -21,7 +21,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3c454d" height="388.0" layoutX="-15.0" stroke="WHITE" strokeType="INSIDE" width="621.0" AnchorPane.bottomAnchor="-17.0" AnchorPane.leftAnchor="-15.0" AnchorPane.rightAnchor="-6.0" AnchorPane.topAnchor="0.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3c454d" height="388.0" layoutY="-16.0" stroke="WHITE" strokeType="INSIDE" width="621.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-21.0" AnchorPane.topAnchor="-16.0" />
                         <ChoiceBox fx:id="beerChoice" layoutX="14.0" layoutY="32.0" onAction="#setDefaultProduct" prefWidth="150.0" />
                         <Label layoutX="14.0" layoutY="14.0" text="Default" textFill="WHITE" />
                         <ChoiceBox fx:id="beerType" layoutX="14.0" layoutY="183.0" prefWidth="150.0" />
@@ -72,10 +72,10 @@
                         <Label layoutX="292.0" layoutY="166.0" text="Set amount" textFill="WHITE" />
                         <Text fx:id="totalProduced" fill="WHITE" layoutX="106.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
                         <Text fx:id="totalDefect" fill="WHITE" layoutX="89.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-                        <Button fx:id="startBtn" layoutX="13.0" layoutY="83.0" mnemonicParsing="false" onMouseClicked="#StartMachine" text="Start" />
-                        <Button fx:id="abortBtn" layoutX="62.0" layoutY="83.0" mnemonicParsing="false" text="Abort" />
-                        <Button fx:id="stopBtn" layoutX="116.0" layoutY="83.0" mnemonicParsing="false" onMouseClicked="#StopMachine" text="Stop" />
-                        <Button fx:id="resetBtn" layoutX="165.0" layoutY="83.0" mnemonicParsing="false" onMouseClicked="#ResetMachine" text="Reset" />
+                        <Button fx:id="startBtn" layoutX="10.0" layoutY="83.0" mnemonicParsing="false" onMouseClicked="#StartMachine" text="Start" />
+                        <Button fx:id="ClearBtn" layoutX="202.0" layoutY="83.0" mnemonicParsing="false" onMouseClicked="#ClearMachine" text="Clear" />
+                        <Button fx:id="stopBtn" layoutX="55.0" layoutY="83.0" mnemonicParsing="false" onMouseClicked="#StopMachine" text="Stop" />
+                        <Button fx:id="resetBtn" layoutX="100.0" layoutY="83.0" mnemonicParsing="false" onMouseClicked="#ResetMachine" text="Reset" />
                         <Label fx:id="speedError" layoutX="187.0" layoutY="208.0" text="Please set speed" textFill="#bf2323" visible="false">
                            <font>
                               <Font size="10.0" />
@@ -101,6 +101,7 @@
                         <Label layoutX="20.0" layoutY="230.0" text="Current batch id:" textFill="WHITE" />
                         <Text fx:id="currentBatchId" fill="WHITE" layoutX="113.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
                         <Button fx:id="stateChartBtn" layoutX="318.0" layoutY="114.0" mnemonicParsing="false" onMouseClicked="#showStateChart" text="Show State-chart" />
+                        <Button fx:id="abortBtn" layoutX="150.0" layoutY="83.0" mnemonicParsing="false" onMouseClicked="#AbortMachine" text="Abort" />
                      </children>
                   </AnchorPane>
             </content>
