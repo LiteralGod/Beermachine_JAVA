@@ -7,7 +7,7 @@ public class InfoRunnable implements Runnable {
     private long sleepTime;
     private boolean running = true;
     private Text tf;
-    Subscription subscripeToNode = new Subscription();
+    Machine subscribeToNode = new Machine();
     int nodeValue = 0;
 
     public void setNodeValue(int nodeValue) {
@@ -27,30 +27,20 @@ public class InfoRunnable implements Runnable {
     @Override
     public void run() {
         switch (tf.getId()) {
-            case "totalProduced" -> {
-                subscripeToNode.totalProduced();
+            case "totalProduced" -> subscribeToNode.totalProduced();
+            case "totalDefect" -> subscribeToNode.totalDefect();
+            case "currentStatus" -> subscribeToNode.currentStatus();
+            
+            case "barley" -> subscribeToNode.barley();
+            case "hops" -> subscribeToNode.hops();
+            case "malt" -> subscribeToNode.malt();
+            case "wheat" -> subscribeToNode.wheat();
+            case "yeast" -> subscribeToNode.yeast();
 
-            }
-            case "totalDefect" -> {
-                subscripeToNode.totalDefect();
-            }
-            case "currentStatus" -> {
-                subscripeToNode.currentStatus();
-            }
-            case "barley" -> {
-                subscripeToNode.barley();
-            }
-            case "maintenance" ->{
-                subscripeToNode.maintenance();
-            }
-
-            case "hops" -> subscripeToNode.hops();
-            case "malt" -> subscripeToNode.malt();
-            case "wheat" ->subscripeToNode.wheat();
-            case "yeast" ->subscripeToNode.yeast();
-            case "humidity" -> subscripeToNode.humidity();
-            case "temperature" -> subscripeToNode.temperature();
-            case "vibration" -> subscripeToNode.vibration();
+            case "humidity" -> subscribeToNode.humidity();
+            case "temperature" -> subscribeToNode.temperature();
+            case "vibration" -> subscribeToNode.vibration();
+            //case "maintenance" -> subscribeToNode.maintenance();
             default -> setNodeValue(0);
 
         }
@@ -60,17 +50,17 @@ public class InfoRunnable implements Runnable {
                 public void run() {
                     switch (tf.getId()) {
                         case "totalProduced", "totalDefect", "currentStatus", "totalGood" -> {
-                            tf.setText(String.valueOf(subscripeToNode.getIntNodeValue()));
+                            tf.setText(String.valueOf(subscribeToNode.getIntNodeValue()));
                         }
                         case "barley", "hops", "malt", "wheat", "yeast" -> {
-                            float newValue = ((subscripeToNode.getFloatNodeValue()/35000)*100);
+                            float newValue = ((subscribeToNode.getFloatNodeValue()/35000)*100);
                             tf.setText(String.format("%.1f", newValue) + " %");
                         }
                         case "humidity", "temperature", "vibration" -> {
-                            tf.setText(String.valueOf(subscripeToNode.getFloatNodeValue()));
+                            tf.setText(String.valueOf(subscribeToNode.getFloatNodeValue()));
                         }
                         case "maintenance" ->{
-                            tf.setText(String.valueOf(subscripeToNode.getShortNodeValue()));
+                            tf.setText(String.valueOf(subscribeToNode.getShortNodeValue()));
                         }
                         default -> setNodeValue(0);
                     }
@@ -87,5 +77,4 @@ public class InfoRunnable implements Runnable {
             }
         }
     }
-
 }

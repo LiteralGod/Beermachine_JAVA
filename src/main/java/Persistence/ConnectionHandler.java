@@ -13,7 +13,6 @@ public class ConnectionHandler {
     private String password = "secret";
     private Connection connection;
 
-
     public ConnectionHandler() {
         initSQLDatabase();
     }
@@ -24,7 +23,6 @@ public class ConnectionHandler {
         }
         return instance;
     }
-
 
     private void initSQLDatabase() {
         try {

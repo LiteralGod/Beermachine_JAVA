@@ -94,7 +94,16 @@ public class StartController implements Initializable {
         } else if (!currentStatus.getText().equals(String.valueOf(4))) {
             statusError.setVisible(true);
             speedError.setVisible(false);
-        } else {
+        }
+        else if (currentStatus.getText().equals(String.valueOf(11))){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Maintenance needed!");
+            alert.setContentText("The machine needs Maintenance!\n" +
+                    "Please inspect the machine before starting!");
+            alert.setHeaderText(null);
+            alert.showAndWait();
+        }
+        else {
             speedError.setVisible(false);
             statusError.setVisible(false);
             float beerTypeID = 0;
@@ -303,7 +312,6 @@ public class StartController implements Initializable {
         executor.execute(domainHandler.handleRunnable(200, humidity));
         executor.execute(domainHandler.handleRunnable(200, temperature));
         executor.execute(domainHandler.handleRunnable(200, vibration));
-
     }
 
 
