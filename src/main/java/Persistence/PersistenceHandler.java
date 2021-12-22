@@ -1,11 +1,7 @@
 package Persistence;
 
-import Domain.Batch;
-import Domain.BeerType;
-import Domain.DefaultProduct;
-import Domain.IPersistenceHandler;
+import Domain.*;
 
-import javax.xml.transform.Result;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -51,12 +47,101 @@ public class PersistenceHandler implements IPersistenceHandler {
 
     @Override
     public List<Batch> queryAllBatches() {
+        try {
+            PreparedStatement stmt = connectionHandler.getConnection().prepareStatement(
+                    "SELECT * FROM batches"
+            );
+            ResultSet sqlReturnValues = stmt.executeQuery();
+
+            List<Batch> returnValue = new ArrayList<>();
+
+            while (sqlReturnValues.next()){
+                returnValue.add(new Batch(
+                        sqlReturnValues.getInt(2),
+                        sqlReturnValues.getString(3),
+                        sqlReturnValues.getInt(4),
+                        sqlReturnValues.getInt(5),
+                        sqlReturnValues.getInt(6),
+                        sqlReturnValues.getInt(7)
+                ));
+            }
+            return returnValue;
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public Batch insertBatch(int currentBatchID, String productName, int prodSpeed, int totalAmount, int totalGood, int totalBad) {
+        try {
+            PreparedStatement stmt = connectionHandler.getConnection().prepareStatement(
+                    "INSERT INTO batches(batchID, productName, speed, totalAmount, goodAmount, badAmount)" +
+                            "VALUES (?, ?, ?, ?, ?, ?)");
+
+            stmt.setInt(1, currentBatchID);
+            stmt.setString(2, productName);
+            stmt.setInt(3, prodSpeed);
+            stmt.setInt(4, totalAmount);
+            stmt.setInt(5, totalGood);
+            stmt.setInt(6, totalBad);
+
+            stmt.execute();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
         return null;
     }
 
     @Override
-    public void insertBatch() {
+    public void insertTemperature(int batchID, float value) {
+        try {
+            PreparedStatement stmt = connectionHandler.getConnection().prepareStatement(
+                    "INSERT INTO temperature(batchID, tempValue)" +
+                            "VALUES (?, ?)");
 
+            stmt.setInt(1, batchID);
+            stmt.setFloat(2, value);
+
+            stmt.execute();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    @Override
+    public void insertHumidity(int batchID, float value) {
+        try {
+            PreparedStatement stmt = connectionHandler.getConnection().prepareStatement(
+                    "INSERT INTO humidity(batchID, humiValue)" +
+                            "VALUES (?, ?)");
+
+            stmt.setInt(1, batchID);
+            stmt.setFloat(2, value);
+
+            stmt.execute();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    @Override
+    public void deleteBatch(int batchID) {
+        try {
+            PreparedStatement stmt = connectionHandler.getConnection().prepareStatement(
+                    "DELETE FROM batches WHERE ID = ?");
+
+            stmt.setInt(1, batchID);
+
+            stmt.execute();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
 
@@ -77,6 +162,51 @@ public class PersistenceHandler implements IPersistenceHandler {
             return new BeerType(
                     sqlReturnValues.getString(1)
             );
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public List<Temperature> getTemperatures(int id){
+        try {
+            PreparedStatement stmt = connectionHandler.getConnection().prepareStatement(
+                    "SELECT * FROM temperature WHERE batchID = (select batchID from batches where batchID = ?)"
+            );
+            stmt.setInt(1,id);
+            ResultSet sqlReturnValues = stmt.executeQuery();
+
+            List<Temperature> returnValue = new ArrayList<>();
+
+            while (sqlReturnValues.next()){
+                returnValue.add(new Temperature(
+                        sqlReturnValues.getInt(1),
+                        sqlReturnValues.getInt(2)));
+            }
+            return returnValue;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return null;
+        }
+    }
+    @Override
+    public List<Humidity> getHumidity(int id){
+        try {
+            PreparedStatement stmt = connectionHandler.getConnection().prepareStatement(
+                    "SELECT * FROM humidity WHERE batchID = (select batchID from batches where batchID = ?)"
+            );
+            stmt.setInt(1,id);
+            ResultSet sqlReturnValues = stmt.executeQuery();
+
+            List<Humidity> returnValue = new ArrayList<>();
+
+            while (sqlReturnValues.next()){
+                returnValue.add(new Humidity(
+                        sqlReturnValues.getInt(1),
+                        sqlReturnValues.getInt(2)));
+            }
+            return returnValue;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
             return null;
@@ -106,5 +236,24 @@ public class PersistenceHandler implements IPersistenceHandler {
             throwables.printStackTrace();
             return null;
         }
+    }
+
+    @Override
+    public Integer queryHighestBatchID(){
+        try {
+            PreparedStatement stmt = connectionHandler.getConnection().prepareStatement(
+                    "SELECT MAX(batchID) FROM batches"
+            );
+
+            ResultSet sqlReturnValues = stmt.executeQuery();
+            sqlReturnValues.next();
+            return sqlReturnValues.getInt(1);
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return null;
+        }
+
     }
 }

@@ -1,0 +1,41 @@
+
+
+Wed Dec 22 12:28:16 2021
+No ARsim registration found!
+  Bernecker & Rainer 
+
+
+
+Wed Dec 22 12:28:16 2021
+COMMAND_COLDSTART
+InstanceName : 01d7f72703ae2a90
+
+WorkingPath :
+C:\Users\dolle\Desktop\SemesterProject_Stat_Repo\Beermachine_JAVA\src\main\resources\Simulation\Config1\X20CP1586\
+
+
+
+Wed Dec 22 12:28:16 2021
+COMMAND_COLDSTART
+Version : E4.34
+
+
+
+Wed Dec 22 12:34:28 2021
+COMMAND_TERMINATE
+
+
+Wed Dec 22 12:34:29 2021
+
+
+Wed Dec 22 12:34:29 2021
+COMMAND_COLDSTART
+Version : E4.34
+
+
+
+Wed Dec 22 12:40:10 2021
+COMMAND_TERMINATE
+
+
+Wed Dec 22 12:40:11 2021

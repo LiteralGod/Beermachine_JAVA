@@ -2,26 +2,27 @@ package Domain;
 
 import Persistence.PersistenceHandler;
 import Presentation.IDomainHandler;
+import javafx.scene.text.Text;
 
 import java.util.List;
 
 public class DomainHandler implements IDomainHandler {
     private static DomainHandler instance;
     IPersistenceHandler persistenceHandler = PersistenceHandler.getInstance();
-    Write writeToNode = new Write();
-    Read readFromNode = new Read();
+    Machine writeToNode = new Machine();
+    Machine readFromNode = new Machine();
     Subscription subscripeToNode = new Subscription();
-    
-    public static DomainHandler getInstance(){
-        if (instance == null){
+
+    public static DomainHandler getInstance() {
+        if (instance == null) {
             instance = new DomainHandler();
         }
         return instance;
     }
 
     @Override
-    public void StartMachine(float beerType, float beerSpeed, float setAmount) {
-        writeToNode.StartMachine(beerType, beerSpeed, setAmount);
+    public void StartMachine(float beerType, float beerSpeed, float setAmount, float batchID) {
+        writeToNode.StartMachine(beerType, beerSpeed, setAmount,batchID);
     }
 
     @Override
@@ -35,30 +36,65 @@ public class DomainHandler implements IDomainHandler {
     }
 
     @Override
+    public void AbortMachine() {
+        writeToNode.AbortMachine();
+    }
+    @Override
+    public void ClearMachine() {
+        writeToNode.ClearMachine();
+    }
+
+
+    @Override
     public List<BeerType> ListOfBeerTypes() {
         return persistenceHandler.queryAllBeerTypes();
     }
 
     @Override
-    public List<DefaultProduct> listOfDefaultProducts(){
+    public List<DefaultProduct> listOfDefaultProducts() {
         return persistenceHandler.queryAllDefaultProducts();
     }
 
     @Override
-    public float Subscribe() {
-        return subscripeToNode.Subscribe();
+    public float readBatchId(){
+        return readFromNode.readBatchID();
     }
 
     @Override
-    public float readValue(String someString) {
-        return readFromNode.readNode(someString);
+    public InfoRunnable handleRunnable(int sleepTime, Text tf) {
+        return new InfoRunnable(sleepTime, tf);
     }
 
     @Override
-    public void HandleRunnable(){
-
-
+    public List<Batch> listOfBatches(){
+        return persistenceHandler.queryAllBatches();
+    }
+    @Override
+    public Batch insertBatch(int batchID, String beerType, int speed, int totalAmount, int totalGood, int totalBad){
+        return persistenceHandler.insertBatch(batchID, beerType, speed, totalAmount, totalGood, totalBad);
     }
 
+    @Override
+    public int highestBatchId(){
+        return persistenceHandler.queryHighestBatchID();
+    }
 
+    @Override
+    public void insertTemperature(int batchID, float value){
+        persistenceHandler.insertTemperature(batchID, value);
+    }
+
+    @Override
+    public void insertHumidity(int batchID, float value){
+        persistenceHandler.insertHumidity(batchID, value);
+    }
+
+    @Override
+    public List<Temperature> selectTemperature(int batchID){
+        return persistenceHandler.getTemperatures(batchID);
+    }
+    @Override
+    public List<Humidity> selectHumidity(int batchID){
+        return persistenceHandler.getHumidity(batchID);
+    }
 }

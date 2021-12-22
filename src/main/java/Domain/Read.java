@@ -21,7 +21,7 @@ import org.slf4j.Logger;
  *
  * @author athil
  */
-public class Read {
+/*public class Read {
     Variant variant;
 
     public int readNode(String someString) {
@@ -56,3 +56,4 @@ public class Read {
     }
 
 }
+*/

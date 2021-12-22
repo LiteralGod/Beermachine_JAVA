@@ -1,25 +1,41 @@
 package Presentation;
 
-import Domain.BeerType;
-import Domain.DefaultProduct;
+import Domain.*;
+import javafx.scene.text.Text;
 
 import java.util.List;
 
 public interface IDomainHandler {
 
-   void StartMachine(float beerType, float beerSpeed, float setAmount);
+   void StartMachine(float beerType, float beerSpeed, float setAmount, float batchID);
 
    void StopMachine();
 
    void ResetMachine();
 
+   void AbortMachine();
+
+   void ClearMachine();
+
    List<BeerType> ListOfBeerTypes();
 
    List<DefaultProduct> listOfDefaultProducts();
 
-   float Subscribe();
+   float readBatchId();
 
-   float readValue(String someString);
+   InfoRunnable handleRunnable(int sleepTime, Text tf);
 
-   void HandleRunnable();
+   List<Batch> listOfBatches();
+
+   Batch insertBatch(int batchID, String beerType, int speed, int totalAmount, int totalGood, int totalBad);
+
+   int highestBatchId();
+
+   void insertTemperature(int batchID, float value);
+
+   void insertHumidity(int batchID, float value);
+
+    List<Humidity> selectHumidity(int batchID);
+
+   List<Temperature> selectTemperature(int batchID);
 }

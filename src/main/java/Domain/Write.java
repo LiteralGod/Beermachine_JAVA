@@ -10,14 +10,19 @@ import org.eclipse.milo.opcua.stack.client.DiscoveryClient;
 import org.eclipse.milo.opcua.stack.core.types.builtin.DataValue;
 import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;
 import org.eclipse.milo.opcua.stack.core.types.builtin.Variant;
+import org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.UInteger;
 import org.eclipse.milo.opcua.stack.core.types.structured.EndpointDescription;
 import org.eclipse.milo.opcua.stack.core.util.EndpointUtil;
+import Domain.Machine;
 
 public class Write {
-    public void StartMachine(float beerTypeID, float setSpeed, float setAmount) {
+
+
+
+    /*public void StartMachine(float beerTypeID, float setSpeed, float setAmount) {
         try {
-            List<EndpointDescription> endpoints = DiscoveryClient.getEndpoints("opc.tcp://192.168.0.122:4840").get();
-            EndpointDescription configPoint = EndpointUtil.updateUrl(endpoints.get(0), "192.168.0.122", 4840);
+            List<EndpointDescription> endpoints = DiscoveryClient.getEndpoints("opc.tcp://127.0.0.1:4840").get();
+            EndpointDescription configPoint = EndpointUtil.updateUrl(endpoints.get(0), "127.0.0.1", 4840);
             OpcUaClientConfigBuilder cfg = new OpcUaClientConfigBuilder();
             cfg.setEndpoint(configPoint);
 
@@ -99,5 +104,5 @@ public class Write {
             ex.printStackTrace();
         }
 
-    }
+    }*/
 }

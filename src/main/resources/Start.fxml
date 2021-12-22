@@ -9,7 +9,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -19,9 +18,8 @@
         <tabs>
           <Tab text="Beermachine">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #3c454d;">
                      <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3c454d" height="392.0" layoutX="-7.0" layoutY="-15.0" stroke="WHITE" strokeType="INSIDE" width="614.0" AnchorPane.bottomAnchor="-6.0" AnchorPane.leftAnchor="-7.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="-15.0" />
                         <ChoiceBox fx:id="beerChoice" layoutX="14.0" layoutY="32.0" onAction="#setDefaultProduct" prefWidth="150.0" />
                         <Label layoutX="14.0" layoutY="14.0" text="Default" textFill="WHITE" />
                         <ChoiceBox fx:id="beerType" layoutX="14.0" layoutY="183.0" prefWidth="150.0" />
@@ -35,68 +33,106 @@
                         <Text fx:id="humidity" fill="WHITE" layoutX="191.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
                         <Text fx:id="vibration" fill="WHITE" layoutX="289.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
                         <Line endX="-29.0" endY="-164.0" layoutX="464.0" layoutY="120.0" startX="-29.0" startY="265.0" />
-                        <Label layoutX="440.0" layoutY="30.0" text="Barley:" textFill="WHITE">
+                        <Label layoutX="440.0" layoutY="59.0" text="Barley:" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Label layoutX="440.0" layoutY="71.0" text="Hops:" textFill="WHITE">
+                        <Label layoutX="440.0" layoutY="93.0" text="Hops:" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Label layoutX="440.0" layoutY="119.0" text="Malt:" textFill="WHITE">
+                        <Label layoutX="440.0" layoutY="125.0" text="Malt:" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Label layoutX="440.0" layoutY="168.0" text="Wheat:" textFill="WHITE">
+                        <Label layoutX="440.0" layoutY="155.0" text="Wheat:" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Label layoutX="440.0" layoutY="210.0" text="Yeast:" textFill="WHITE">
+                        <Label layoutX="440.0" layoutY="184.0" text="Yeast:" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Text fx:id="barley" fill="WHITE" layoutX="510.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-                        <Text fx:id="hops" fill="WHITE" layoutX="510.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-                        <Text fx:id="malt" fill="WHITE" layoutX="510.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-                        <Text fx:id="wheat" fill="WHITE" layoutX="510.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-                        <Text fx:id="yeast" fill="WHITE" layoutX="510.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-                        <Label layoutX="20.0" layoutY="232.0" text="Total produced:" textFill="WHITE" />
-                        <Label layoutX="20.0" layoutY="288.0" text="Total bad:" textFill="WHITE" />
+                        <Text fx:id="barley" fill="WHITE" layoutX="505.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fx:id="hops" fill="WHITE" layoutX="505.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fx:id="malt" fill="WHITE" layoutX="505.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fx:id="wheat" fill="WHITE" layoutX="505.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fx:id="yeast" fill="WHITE" layoutX="505.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Label layoutX="20.0" layoutY="255.0" text="Total produced:" textFill="WHITE" />
+                        <Label layoutX="20.0" layoutY="305.0" text="Total defect:" textFill="WHITE" />
                         <Line endX="334.0" layoutX="100.0" layoutY="330.0" startX="-100.0" />
                         <TextField fx:id="beerAmount" layoutX="292.0" layoutY="183.0" prefHeight="25.0" prefWidth="112.0" />
                         <Label layoutX="292.0" layoutY="166.0" text="Set amount" textFill="WHITE" />
-                        <Text fx:id="totalProduced" fill="WHITE" layoutX="106.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-                        <Text fx:id="totalBad" fill="WHITE" layoutX="78.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-                        <Button fx:id="startBtn" layoutX="13.0" layoutY="83.0" mnemonicParsing="false" onMouseClicked="#StartMachine" text="Start" />
-                        <Button fx:id="abortBtn" layoutX="62.0" layoutY="83.0" mnemonicParsing="false" text="Abort" />
-                        <Button fx:id="stopBtn" layoutX="116.0" layoutY="83.0" mnemonicParsing="false" onMouseClicked="#StopMachine" text="Stop" />
-                        <Button fx:id="resetBtn" layoutX="165.0" layoutY="83.0" mnemonicParsing="false" onMouseClicked="#ResetMachine" text="Reset" />
+                        <Text fx:id="totalProduced" fill="WHITE" layoutX="106.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fx:id="totalDefect" fill="WHITE" layoutX="89.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Button fx:id="startBtn" layoutX="10.0" layoutY="83.0" mnemonicParsing="false" onMouseClicked="#StartMachine" text="Start" />
+                        <Button fx:id="ClearBtn" layoutX="202.0" layoutY="83.0" mnemonicParsing="false" onMouseClicked="#ClearMachine" text="Clear" />
+                        <Button fx:id="stopBtn" layoutX="55.0" layoutY="83.0" mnemonicParsing="false" onMouseClicked="#StopMachine" text="Stop" />
+                        <Button fx:id="resetBtn" layoutX="100.0" layoutY="83.0" mnemonicParsing="false" onMouseClicked="#ResetMachine" text="Reset" />
                         <Label fx:id="speedError" layoutX="187.0" layoutY="208.0" text="Please set speed" textFill="#bf2323" visible="false">
                            <font>
                               <Font size="10.0" />
                            </font></Label>
-                        <Label layoutX="20.0" layoutY="260.0" text="Total good:" textFill="WHITE" />
-                        <Text fx:id="totalGood" fill="WHITE" layoutX="85.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Label layoutX="20.0" layoutY="280.0" text="Total good:" textFill="WHITE" />
+                        <Text fx:id="totalGood" fill="WHITE" layoutX="86.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
                         <Label layoutX="13.0" layoutY="118.0" text="Current Status:" textFill="#dbff6e" />
                         <Text fx:id="currentStatus" fill="#dcff5c" layoutX="92.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stopped">
                            <font>
                               <Font size="11.0" />
                            </font>
                         </Text>
+                        <Text fill="WHITE" layoutX="440.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inventory">
+                           <font>
+                              <Font size="28.0" />
+                           </font></Text>
+                        <Button fx:id="saveBtn" layoutX="384.0" layoutY="293.0" mnemonicParsing="false" onAction="#saveBatch" style="-fx-background-color: #00ff00;" text="Save" textFill="WHITE" visible="false" />
+                        <Label fx:id="statusError" layoutX="16.0" layoutY="141.0" text="Please reset to status 4" textFill="#bf2323" visible="false">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="20.0" layoutY="230.0" text="Current batch id:" textFill="WHITE" />
+                        <Text fx:id="currentBatchId" fill="WHITE" layoutX="113.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Button fx:id="stateChartBtn" layoutX="318.0" layoutY="114.0" mnemonicParsing="false" onMouseClicked="#showStateChart" text="Show State-chart" />
+                        <Button fx:id="abortBtn" layoutX="150.0" layoutY="83.0" mnemonicParsing="false" onMouseClicked="#AbortMachine" text="Abort" />
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="Batches">
+          <Tab onSelectionChanged="#updateListView" text="Batches">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #3c454d;">
                      <children>
-                        <ListView prefHeight="371.0" prefWidth="272.0" style="-fx-background-color: #3c434d;" />
+                        <ListView fx:id="batchListView" layoutX="4.0" layoutY="6.0" onMouseClicked="#setBatchData" prefHeight="359.0" prefWidth="133.0" style="-fx-background-color: #3c434d;" />
+                        <Label layoutX="150.0" layoutY="35.0" text="Batch ID:" textFill="WHITE" />
+                        <Label layoutX="150.0" layoutY="65.0" text="Product produced:" textFill="WHITE" />
+                        <Label layoutX="150.0" layoutY="95.0" text="Speed:" textFill="WHITE" />
+                        <Label layoutX="150.0" layoutY="125.0" text="Total amount:" textFill="WHITE" />
+                        <Label layoutX="150.0" layoutY="155.0" text="Good amount:" textFill="WHITE" />
+                        <Label layoutX="150.0" layoutY="185.0" text="Bad amount:" textFill="WHITE" />
+                        <Text fx:id="batch_batchID" fill="WHITE" layoutX="205.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fx:id="batch_productProduced" fill="WHITE" layoutX="255.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fx:id="batch_speed" fill="WHITE" layoutX="194.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fx:id="batch_totalAmount" fill="WHITE" layoutX="227.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fx:id="batch_totalGood" fill="WHITE" layoutX="230.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fx:id="batch_totalBad" fill="WHITE" layoutX="221.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <ListView fx:id="temperatureListView" layoutX="373.0" layoutY="32.0" prefHeight="143.0" prefWidth="214.0" />
+                        <Label fx:id="dataLabel" layoutX="415.0" text="Temperatures" textFill="WHITE">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Label>
+                        <ListView fx:id="humidityListView" layoutX="372.0" layoutY="218.0" prefHeight="143.0" prefWidth="214.0" />
+                        <Label fx:id="dataLabel1" layoutX="437.0" layoutY="187.0" text="Humidity" textFill="WHITE">
+                           <font>
+                              <Font size="21.0" />
+                           </font>
+                        </Label>
                      </children></AnchorPane>
             </content>
           </Tab>
