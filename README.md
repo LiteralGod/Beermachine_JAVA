@@ -19,7 +19,11 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](src/main/resources/Pictures/ProductScreenshot.png)
+<div align="center">
+  <a href="https://github.com/LiteralGod/Beermachine_JAVA">
+    <img src="src/main/resources/Pictures/ProductScreenshot.png" alt="Logo" width="400" height="auto">
+  </a>
+</div>
 
 Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `LiteralGod`, `Beermachine_JAVA`, `twitter_handle`, `linkedin_username`, `email`, `email_client`, `project_title`, `project_description`
 
@@ -29,14 +33,14 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 ### Built With
 
-* [Next.js](https://nextjs.org/)
-* [React.js](https://reactjs.org/)
-* [Vue.js](https://vuejs.org/)
-* [Angular](https://angular.io/)
-* [Svelte](https://svelte.dev/)
+* [Java](https://docs.oracle.com/en/java/)
+* [Docker](https://www.docker.com/)
+* [JavaFX](https://openjfx.io/)
+* [MySQL](https://www.mysql.com/)
+* [Maven](https://maven.apache.org/)
 * [Laravel](https://laravel.com)
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
+* [OPC UA](https://opcfoundation.org/about/opc-technologies/opc-ua/)
+* [JavaScript](https://www.javascript.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -48,29 +52,14 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-### Installation
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/LiteralGod/Beermachine_JAVA.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+* Open up a terminal in the `Main` directory.
+* Type 
+```sh
+docker-compose up -d
+```
+into the terminal, then wait for the command to complete.
+* run the `start.bat` file, in the `resources` directory.
+* Now run the `FXMain` class in the `Presentation` under `Main` directory.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -78,8 +67,6 @@ This is an example of how to list things you need to use the software and how to
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
