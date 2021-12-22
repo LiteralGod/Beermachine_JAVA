@@ -63,9 +63,13 @@ cd main
 cd resources
 cd Simulation
 ```
-* run the `start.bat` file, in the `resources` directory using:
+* run the `start.bat` file, in the `resources` directory using, on `Windows`:
 ```sh
 start start.bat
+```
+  on `Linux`:
+```sh
+xdg-open start.bat
 ```
 * This should open up a windows program, along with a website shows a simulation of the
   PLC-controller. **_(The website is not used in our program)_**
