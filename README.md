@@ -63,11 +63,11 @@ cd main
 cd resources
 cd Simulation
 ```
-* run the `start.bat` file, in the `resources` directory using, on `Windows`:
+* run the `start.bat` file, in the `resources` directory using, on  <img src="src/main/resources/Pictures/windowsLogo.png" alt="Logo" width="100" height="auto">  
 ```sh
 start start.bat
 ```
-  on `Linux`:
+  and on   <img src="src/main/resources/Pictures/linuxLogoWithNoPenguin.png" alt="Logo" width="60" height="auto">
 ```sh
 xdg-open start.bat
 ```
