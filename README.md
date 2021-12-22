@@ -52,13 +52,25 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
-* Open up a terminal in the `Main` directory.
-* Type 
+* Open up a terminal in the `Main` directory. 
+* Type into the terminal:
 ```sh
 docker-compose up -d
 ```
-into the terminal, then wait for the command to complete.
-* run the `start.bat` file, in the `resources` directory.
+* When the command has completed navigate to the `Simulation` directory:
+```sh
+cd main
+cd resources
+cd Simulation
+```
+* run the `start.bat` file, in the `resources` directory using:
+```sh
+start start.bat
+```
+* This should open up a windows program, along with a website shows a simulation of the
+  PLC-controller. **_(The website is not used in our program)_**
+* In the windows program, press the `Restart` button, and wait for the `ARsim status information` to change
+  to <span style="color: green">Green Color</span> and the text to say `Run boot mode: warm restart`
 * Now run the `FXMain` class in the `Presentation` under `Main` directory.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
