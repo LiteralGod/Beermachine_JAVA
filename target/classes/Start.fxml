@@ -9,7 +9,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -19,9 +18,8 @@
         <tabs>
           <Tab text="Beermachine">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #3c454d;">
                      <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3c454d" height="388.0" layoutY="-16.0" stroke="WHITE" strokeType="INSIDE" width="621.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-21.0" AnchorPane.topAnchor="-16.0" />
                         <ChoiceBox fx:id="beerChoice" layoutX="14.0" layoutY="32.0" onAction="#setDefaultProduct" prefWidth="150.0" />
                         <Label layoutX="14.0" layoutY="14.0" text="Default" textFill="WHITE" />
                         <ChoiceBox fx:id="beerType" layoutX="14.0" layoutY="183.0" prefWidth="150.0" />

@@ -381,10 +381,10 @@ public class Machine {
         this.connect();
         try {
             NodeId nodeId1 = NodeId.parse(nsString + "Cube.Command.CntrlCmd");
-            client.writeValue(nodeId1, DataValue.valueOnly(new Variant(4))).get();
+            connect().writeValue(nodeId1, DataValue.valueOnly(new Variant(4))).get();
 
             NodeId nodeId2 = NodeId.parse(nsString + "Cube.Command.CmdChangeRequest");
-            client.writeValue(nodeId2, DataValue.valueOnly(new Variant(true))).get();
+            connect().writeValue(nodeId2, DataValue.valueOnly(new Variant(true))).get();
         } catch (Throwable ex) {
             ex.printStackTrace();
         }
@@ -393,10 +393,10 @@ public class Machine {
         this.connect();
         try {
             NodeId nodeId1 = NodeId.parse(nsString + "Cube.Command.CntrlCmd");
-            client.writeValue(nodeId1, DataValue.valueOnly(new Variant(5))).get();
+            connect().writeValue(nodeId1, DataValue.valueOnly(new Variant(5))).get();
 
             NodeId nodeId2 = NodeId.parse(nsString + "Cube.Command.CmdChangeRequest");
-            client.writeValue(nodeId2, DataValue.valueOnly(new Variant(true))).get();
+            connect().writeValue(nodeId2, DataValue.valueOnly(new Variant(true))).get();
         } catch (Throwable ex) {
             ex.printStackTrace();
         }
