@@ -71,9 +71,9 @@ start start.bat
 ```sh
 xdg-open start.bat
 ```
-* This should open up a windows program, along with a website shows a simulation of the
+* This should open up the simulation program, along with a website shows a simulation of the
   PLC-controller. **_(The website is not used in our program)_**
-* In the windows program, press the `Restart` button, and wait for the `ARsim status information` to change
+* In the simulation program, press the `Restart` button, and wait for the `ARsim status information` to change
   to <span style="color: green">Green Color</span> and the text to say `Run boot mode: warm restart`
 * Now run the `FXMain` class in the `Presentation` under `Main` directory.
 
